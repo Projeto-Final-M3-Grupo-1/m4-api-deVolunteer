@@ -15,6 +15,7 @@ export const CreateUserSerializerWithoutPass: SchemaOf<iUser> = yup
     isActive: yup.boolean().required(),
     createdAt: yup.date().required(),
     updatedAt: yup.date().required(),
+    location: yup.string().required(),
   });
 
 export const CreateUserSerializerRequest: SchemaOf<iUserRequest> = yup
@@ -27,6 +28,7 @@ export const CreateUserSerializerRequest: SchemaOf<iUserRequest> = yup
     linkedin: yup.string().required(),
     profilePicture: yup.string().required(),
     isAdm: yup.boolean().notRequired(),
+    location: yup.string().required(),
   });
 
 export const ListUsersWithoutPass: SchemaOf<iUser[]> = yup.array(

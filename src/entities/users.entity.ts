@@ -36,6 +36,9 @@ class User {
   @Column()
   profilePicture: string;
 
+  @Column({ default: "Localização não encontrada", nullable: true })
+  location: string;
+
   @Column({ default: false })
   isAdm: boolean;
 
