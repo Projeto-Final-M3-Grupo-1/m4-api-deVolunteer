@@ -36,7 +36,7 @@ class User {
   @Column()
   profilePicture: string;
 
-  @Column()
+  @Column({ default: false })
   isAdm: boolean;
 
   @Column({ default: true })
