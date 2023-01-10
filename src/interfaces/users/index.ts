@@ -6,6 +6,7 @@ export interface iUserRequest {
   linkedin: string;
   profilePicture: string;
   isAdm?: boolean;
+  location?: string;
 }
 
 export interface iUser {
