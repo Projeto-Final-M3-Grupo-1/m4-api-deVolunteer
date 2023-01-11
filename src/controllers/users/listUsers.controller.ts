@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import listUsersService from "../../services/users/listUsers.service";
+import { listUsersService } from "../../services";
 
-const listUser = async (req: Request, res: Response) => {
-  const response = await listUsersService();
-  return res.status(200).json(response);
+const listUserController = async (req: Request, res: Response) => {
+	const response = await listUsersService();
+
+	return res.status(200).json(response);
 };
 
-export default listUser;
+export default listUserController;
