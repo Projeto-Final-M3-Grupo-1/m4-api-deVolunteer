@@ -29,11 +29,20 @@ class Ong {
   @Column()
   phone: number;
 
-  @Column()
-  ownerName: string;
+  @Column({ nullable: true })
+  ownerName?: string;
 
-  @Column()
-  profilePicture: string;
+  @Column({ nullable: true })
+  profilePicture?: string;
+
+  @Column({ nullable: true })
+  github?: string;
+
+  @Column({ nullable: true })
+  linkedin?: string;
+
+  @Column({ default: true })
+  isActive: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
