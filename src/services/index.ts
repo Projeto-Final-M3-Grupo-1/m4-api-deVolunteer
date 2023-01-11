@@ -9,6 +9,7 @@ import createNewsService from "./news/createNews.service";
 import listNewsService from "./news/listNews.service";
 import deleteNewsService from "./news/deleteNews.service";
 import updateNewsService from "./news/updateNews.service";
+import listNewsByIdService from "./news/listNewsById.service";
 
 export {
 	createUserService,
@@ -19,4 +20,5 @@ export {
 	listNewsService,
 	deleteNewsService,
 	updateNewsService,
+	listNewsByIdService,
 };

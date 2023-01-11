@@ -9,6 +9,7 @@ import createNewsController from "./news/createNews.controller";
 import listNewsController from "./news/listNews.controller";
 import deleteNewsController from "./news/deleteNews.controller";
 import updateNewsController from "./news/updateNews.controller";
+import listNewsByIdController from "./news/listNewsById.controller";
 
 export {
 	listUserController,
@@ -19,4 +20,5 @@ export {
 	listNewsController,
 	deleteNewsController,
 	updateNewsController,
+	listNewsByIdController,
 };
