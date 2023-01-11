@@ -41,6 +41,9 @@ class Ong {
   @Column({ nullable: true })
   linkedin?: string;
 
+  @Column({ default: true })
+  isActive: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 

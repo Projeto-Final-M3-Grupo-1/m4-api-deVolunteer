@@ -35,6 +35,7 @@ export const createOngService = async (
   const { password, ...createdOng } = ongRepository.create(ongData);
 
   await ongRepository.save({ password, ...createdOng });
+
   const { password: ignored, ...createdOngSaved } =
     (await ongRepository.findOneBy({ email: ongData.email })) as Ong;
 
