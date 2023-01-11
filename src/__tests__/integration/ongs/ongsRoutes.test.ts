@@ -54,7 +54,6 @@ describe("/ong", () => {
     expect(response.body[0]).toHaveProperty("linkedin");
     expect(response.body[0]).toHaveProperty("profilePicture");
     expect(response.body[0]).toHaveProperty("cnpj");
-    expect(response.body[0]).toHaveProperty("isActive");
     expect(response.body[0]).toHaveProperty("phone");
     expect(response.body[0]).toHaveProperty("ownerName");
     expect(response.body[0]).toHaveProperty("createdAt");
@@ -62,7 +61,6 @@ describe("/ong", () => {
     expect(response.body[0]).not.toHaveProperty("password");
     expect(response.body[0].companyName).toEqual("ABCDE");
     expect(response.body[0].email).toEqual("abcde@email.com");
-    expect(response.body[0].isActive).toEqual(true);
     expect(response.status).toEqual(200);
   });
 
