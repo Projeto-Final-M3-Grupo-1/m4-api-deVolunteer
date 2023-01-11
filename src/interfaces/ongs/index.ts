@@ -1,4 +1,5 @@
 export interface IOngRequest extends IOngResponse {
+  id?: string;
   password: string;
 }
 

@@ -1,3 +1,4 @@
+import { ILogin } from "../../interfaces/login";
 import { IOngRequest } from "../../interfaces/ongs";
 import { iUserRequest } from "../../interfaces/users";
 
@@ -26,4 +27,9 @@ export const mockedDeleteOng: IOngRequest = {
   password: "1234",
   cnpj: "12345678901210",
   phone: 219765479,
+};
+
+export const mockedOngLogin: ILogin = {
+  email: "abcde@email.com",
+  password: "1234",
 };

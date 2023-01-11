@@ -9,7 +9,6 @@ const createUserService = async (userData: iUserRequest) => {
 
   userData.location = await getLocation();
 
-  console.log(userData);
   const user = userRepository.create(userData);
   await userRepository.save(user);
 

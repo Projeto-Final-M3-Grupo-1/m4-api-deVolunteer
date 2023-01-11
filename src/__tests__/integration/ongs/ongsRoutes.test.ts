@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import AppDataSource from "../../../data-source";
 import request from "supertest";
 import app from "../../../app";
-import { mockedDeleteOng, mockedOng } from "../../mocks";
+import { mockedDeleteOng, mockedOng, mockedOngLogin } from "../../mocks";
 import { IOngResponse } from "../../../interfaces/ongs";
 
 describe("/ong", () => {
@@ -45,8 +45,12 @@ describe("/ong", () => {
   });
 
   test("GET /ong -  Must be able to list ONGs", async () => {
-    const response = await request(app).get("/ong");
-
+    const {
+      body: { token },
+    } = await request(app).post("/login").send(mockedOngLogin);
+    const response = await request(app)
+      .get("/ong")
+      .set("Authorization", `Bearer ${token}`);
     expect(response.body).toHaveLength(1);
     expect(response.body[0]).toHaveProperty("companyName");
     expect(response.body[0]).toHaveProperty("email");
@@ -65,10 +69,160 @@ describe("/ong", () => {
   });
 
   test("DELETE /ong -  Must be able to delete an ONG", async () => {
+    const {
+      body: { token },
+    } = await request(app).post("/login").send(mockedOngLogin);
     const { body: ong } = await request(app).post("/ong").send(mockedDeleteOng);
+    const response = await request(app)
+      .delete(`/ong/${ong.id}`)
+      .set("Authorization", `Bearer ${token}`);
 
-    const response = await request(app).delete(`/ong/${ong.id}`);
+    mockedDeleteOng.id = ong.id;
 
     expect(response.status).toEqual(204);
   });
+
+  test("POST /ong -  should not be able to create an ONG that already exists", async () => {
+    const response = await request(app).post("/ong").send(mockedOng);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(409);
+  });
+
+  test("GET /ong -  should not be able to list ONGs without authentication", async () => {
+    const response = await request(app).get("/ong");
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
+  });
+
+  test("DELETE /ong/:id -  shouldn't be able to delete ONG with isActive = false", async () => {
+    await request(app).post("/ong").send(mockedDeleteOng);
+
+    const {
+      body: { token },
+    } = await request(app).post("/login").send(mockedOngLogin);
+
+    const response = await request(app)
+      .delete(`/ong/${mockedDeleteOng.id}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(400);
+  });
+  /*
+  test("DELETE /ong/:id -  should not be able to delete ONG with invalid id", async () => {
+    await request(app).post("/ong").send(mockedAdmin);
+
+    const adminLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+
+    const response = await request(app)
+      .delete(`/ong/13970660-5dbe-423a-9a9d-5c23b37943cf`)
+      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
+    expect(response.status).toBe(404);
+    expect(response.body).toHaveProperty("message");
+  });
+
+  test("PATCH /ong/:id -  should not be able to update ONG without authentication", async () => {
+    const adminLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+    const ongTobeUpdate = await request(app)
+      .get("/ong")
+      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
+    const response = await request(app).patch(
+      `/ong/${ongTobeUpdate.body[0].id}`
+    );
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
+  });
+
+  test("PATCH /ong/:id - should not be able to update ONG with invalid id", async () => {
+    const newValues = { name: "Joana Brito", email: "joanabrito@mail.com" };
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+    const token = `Bearer ${admingLoginResponse.body.token}`;
+
+    const ongTobeUpdateRequest = await request(app)
+      .get("/ong")
+      .set("Authorization", token);
+    const ongTobeUpdateId = ongTobeUpdateRequest.body[0].id;
+
+    const response = await request(app)
+      .patch(`/ong/13970660-5dbe-423a-9a9d-5c23b37943cf`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(404);
+  });
+
+  test("PATCH /ong/:id - should not be able to update isAdm field value", async () => {
+    const newValues = { isAdm: false };
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+    const token = `Bearer ${admingLoginResponse.body.token}`;
+
+    const ongTobeUpdateRequest = await request(app)
+      .get("/ong")
+      .set("Authorization", token);
+    const ongTobeUpdateId = ongTobeUpdateRequest.body[0].id;
+
+    const response = await request(app)
+      .patch(`/ong/${ongTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
+  });
+
+  test("PATCH /ong/:id - should not be able to update isActive field value", async () => {
+    const newValues = { isActive: false };
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+    const token = `Bearer ${admingLoginResponse.body.token}`;
+
+    const ongTobeUpdateRequest = await request(app)
+      .get("/ong")
+      .set("Authorization", token);
+    const ongTobeUpdateId = ongTobeUpdateRequest.body[0].id;
+
+    const response = await request(app)
+      .patch(`/ong/${ongTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
+  });
+
+  test("PATCH /ong/:id - should not be able to update id field value", async () => {
+    const newValues = { id: false };
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+    const token = `Bearer ${admingLoginResponse.body.token}`;
+
+    const ongTobeUpdateRequest = await request(app)
+      .get("/ong")
+      .set("Authorization", token);
+    const ongTobeUpdateId = ongTobeUpdateRequest.body[0].id;
+
+    const response = await request(app)
+      .patch(`/ong/${ongTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
+  }); */
 });
