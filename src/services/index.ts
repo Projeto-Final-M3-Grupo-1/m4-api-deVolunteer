@@ -11,11 +11,20 @@ import deleteNewsService from "./news/deleteNews.service";
 import updateNewsService from "./news/updateNews.service";
 import listNewsByIdService from "./news/listNewsById.service";
 
-/* Techs */
+/* Ongs */
+import createOngService from "./ongs/createOng.service";
+import deleteOngService from "./ongs/deleteOng.service";
+import listOngService from "./ongs/listOng.service";
+import updateOngService from "./ongs/updateOng.service";
+
+/* Login */
+import loginService from "./login/login.service";
 
 /* Tasks */
 import createTaskService from "./tasks/createTask.service";
-
+import listAllTasksService from "./tasks/listAllTasks.service";
+import updateTaskService from "./tasks/updateTask.service";
+import deleteTaskService from "./tasks/deleteTask.service";
 
 export {
 	createUserService,
@@ -27,5 +36,13 @@ export {
 	deleteNewsService,
 	updateNewsService,
 	listNewsByIdService,
-	createTaskService
+	createTaskService,
+	createOngService,
+	deleteOngService,
+	listOngService,
+	updateOngService,
+	loginService,
+	listAllTasksService,
+	updateTaskService,
+	deleteTaskService
 };

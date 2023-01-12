@@ -6,5 +6,9 @@ export interface ITaskResponse {
     id: string;
     title: string;
     status: string;
-    user: string;
+    user?: string;
+}
+
+export interface ITaskUpdate {
+    title?: string;
 }

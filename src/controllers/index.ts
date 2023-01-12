@@ -11,7 +11,21 @@ import deleteNewsController from "./news/deleteNews.controller";
 import updateNewsController from "./news/updateNews.controller";
 import listNewsByIdController from "./news/listNewsById.controller";
 
-/* Technoligies */
+/* Ongs */
+import createOngController from "./ongs/createOng.controller";
+import deleteOngController from "./ongs/deleteOng.controller";
+import listOngController from "./ongs/listOng.controller";
+import updateOngController from "./ongs/updateOng.controller";
+
+/* Login */
+import loginController from "./login/login.controller";
+
+/* Tasks */
+import createTaskController from "./tasks/tasks.controller";
+import listAllTasksController from "./tasks/listAllTasks.controller";
+import updateTaskcontroller from "./tasks/updateTasks.controller";
+import deleteTaskController from "./tasks/deleteTask.controller";
+
 
 export {
 	listUserController,
@@ -23,4 +37,13 @@ export {
 	deleteNewsController,
 	updateNewsController,
 	listNewsByIdController,
+	createOngController,
+	deleteOngController,
+	listOngController,
+	updateOngController,
+	loginController,
+	createTaskController,
+	listAllTasksController,
+	updateTaskcontroller,
+	deleteTaskController
 };

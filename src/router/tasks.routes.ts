@@ -1,8 +1,6 @@
 import { Router } from "express";
-import createTaskController from "../controllers/tasks/tasks.controller";
-import { ensureAuthMiddleware } from "../middlewares/users/ensureAuth.middleware";
-import { isAdminMiddleware } from "../middlewares/users/isAdminMiddleware";
-import { validateSchemaMiddleware } from "../middlewares/validate/validateSchema.middlweware";
+import { createTaskController, deleteTaskController, listAllTasksController, updateTaskcontroller } from "../controllers";
+import { ensureAuthMiddleware, isAdminMiddleware, validateSchemaMiddleware } from "../middlewares";
 import { createTaskSerrializer } from "../serializers/task.serializer";
 
 const tasksRoutes = Router();
@@ -13,6 +11,26 @@ tasksRoutes.post(
     isAdminMiddleware,
     validateSchemaMiddleware(createTaskSerrializer),
     createTaskController
+);
+
+tasksRoutes.get(
+    "",
+    ensureAuthMiddleware,
+    listAllTasksController
+);
+
+tasksRoutes.patch(
+    "/:id",
+    ensureAuthMiddleware,
+    isAdminMiddleware,
+    updateTaskcontroller
+);
+
+tasksRoutes.delete(
+    "/:id", 
+    ensureAuthMiddleware, 
+    isAdminMiddleware, 
+    deleteTaskController
 );
 
 export default tasksRoutes;

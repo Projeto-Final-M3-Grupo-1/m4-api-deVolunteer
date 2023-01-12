@@ -4,8 +4,7 @@ import { createTaskService } from "../../services";
 
 const createTaskController = async (req: Request, res: Response) => {
     const taskData: ITaskResponse = req.body
-    const userId: string = req.user.id
-    const newTask = await createTaskService(taskData, userId)
+    const newTask = await createTaskService(taskData)
     return res.status(201).send(newTask)
 }
 
