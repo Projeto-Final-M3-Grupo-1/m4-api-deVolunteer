@@ -7,8 +7,5 @@ class Technology {
 
   @Column()
   name: string;
-
-  @Column()
-  description: string;
 }
 export default Technology;
