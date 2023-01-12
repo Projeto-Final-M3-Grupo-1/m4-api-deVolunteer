@@ -11,16 +11,41 @@ import deleteNewsController from "./news/deleteNews.controller";
 import updateNewsController from "./news/updateNews.controller";
 import listNewsByIdController from "./news/listNewsById.controller";
 
-/* Technoligies */
+/* Ongs */
+import createOngController from "./ongs/createOng.controller";
+import deleteOngController from "./ongs/deleteOng.controller";
+import listOngController from "./ongs/listOng.controller";
+import updateOngController from "./ongs/updateOng.controller";
+
+/* Login */
+import loginController from "./login/login.controller";
+
+import createTaskController from "./tasks/tasks.controller";
+import listAllTasksController from "./tasks/listAllTasks.controller";
+import updateTaskcontroller from "./tasks/updateTasks.controller";
+import deleteTaskController from "./tasks/deleteTask.controller";
+
+/* Technologies */
+import insertTechnologiesController from "./technologies/insertTechnologies.controller";
 
 export {
-	listUserController,
-	createUserController,
-	deleteUserController,
-	updateUserController,
-	createNewsController,
-	listNewsController,
-	deleteNewsController,
-	updateNewsController,
-	listNewsByIdController,
+  listUserController,
+  createUserController,
+  deleteUserController,
+  updateUserController,
+  createNewsController,
+  listNewsController,
+  deleteNewsController,
+  updateNewsController,
+  listNewsByIdController,
+  createOngController,
+  deleteOngController,
+  listOngController,
+  updateOngController,
+  loginController,
+  insertTechnologiesController,
+  createTaskController,
+	listAllTasksController,
+	updateTaskcontroller,
+	deleteTaskController
 };

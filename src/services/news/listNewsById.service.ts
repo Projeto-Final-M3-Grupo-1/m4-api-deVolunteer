@@ -5,6 +5,7 @@ import { iNewsResponse } from "../../interfaces/news";
 const listNewsByIdService = async (newsId: string): Promise<iNewsResponse> => {
   const newsRepository = AppDataSource.getRepository(News);
 
+
   const news = await newsRepository.find({
     where: {
       id: newsId,
