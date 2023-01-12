@@ -28,6 +28,7 @@ import deleteTaskService from "./tasks/deleteTask.service";
 
 /* Technologies */
 import insertTechnologiesService from "./technologies/insertTechnologies.service";
+import listTechnologiesService from "./technologies/listTechlonogies.service";
 
 export {
   createUserService,
@@ -49,4 +50,5 @@ export {
   updateTaskService,
   deleteTaskService,
   createTaskService,
+  listTechnologiesService,
 };
