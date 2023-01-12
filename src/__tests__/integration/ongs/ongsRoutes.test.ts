@@ -3,7 +3,6 @@ import AppDataSource from "../../../data-source";
 import request from "supertest";
 import app from "../../../app";
 import { mockedDeleteOng, mockedOng, mockedOngLogin } from "../../mocks";
-import { IOngResponse } from "../../../interfaces/ongs";
 
 describe("/ong", () => {
   let connection: DataSource;

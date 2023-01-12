@@ -32,13 +32,3 @@ export const mockedUserLogin: ILogin = {
   email: "bruno@mail.com",
   password: "123456",
 };
-
-export const mockedAdminUser: iUserRequest = {
-  name: "Gabs Ghidini",
-  email: "gabsghidini@mail.com",
-  isAdm: true,
-  password: "123456",
-  github: "www.github.com",
-  linkedin: "www.linkedin.com",
-  profilePicture: "https://thiscatdoesnotexist.com/",
-};

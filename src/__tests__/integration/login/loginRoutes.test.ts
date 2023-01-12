@@ -2,11 +2,13 @@ import request from "supertest";
 import { DataSource } from "typeorm";
 import app from "../../../app";
 import AppDataSource from "../../../data-source";
+
 import {
   mockedLogin,
   mockedOng,
   mockedOngLogin,
   mockedUser,
+  mockedUserLogin,
 } from "../../mocks";
 
 describe("/login", () => {
@@ -30,7 +32,7 @@ describe("/login", () => {
   });
 
   test("POST /login -  should be able to login with the User", async () => {
-    const response = await request(app).post("/login").send(mockedLogin);
+    const response = await request(app).post("/login").send(mockedUserLogin);
 
     expect(response.body).toHaveProperty("token");
     expect(response.status).toBe(200);
@@ -54,7 +56,9 @@ describe("/login", () => {
   });
 
   test("POST /login -  should not be able to login with the user with isActive = false", async () => {
-    const loginResponse = await request(app).post("/login").send(mockedLogin);
+    const loginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
     const findUser = await request(app)
       .get("/users")
       .set("Authorization", `Bearer ${loginResponse.body.token}`);

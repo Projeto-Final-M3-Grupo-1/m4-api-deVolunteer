@@ -20,8 +20,8 @@ import updateOngController from "./ongs/updateOng.controller";
 /* Login */
 import loginController from "./login/login.controller";
 
-import createTaskController from "./tasks/tasks.controller";
-import listAllTasksController from "./tasks/listAllTasks.controller";
+import createTaskController from "./tasks/createTasks.controller";
+import listAllTasksController from "./tasks/listTasks.controller";
 import updateTaskcontroller from "./tasks/updateTasks.controller";
 import deleteTaskController from "./tasks/deleteTask.controller";
 
@@ -45,7 +45,7 @@ export {
   loginController,
   insertTechnologiesController,
   createTaskController,
-	listAllTasksController,
-	updateTaskcontroller,
-	deleteTaskController
+  listAllTasksController,
+  updateTaskcontroller,
+  deleteTaskController,
 };
