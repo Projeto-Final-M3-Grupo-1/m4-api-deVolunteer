@@ -20,6 +20,7 @@ ongRouter.post(
 ongRouter.get("", ensureAuthMiddleware, listOngController);
 ongRouter.patch(
   "/:id",
+  ensureAuthMiddleware,
   validateSchemaMiddleware(ongUpdateSerializer),
   updateOngController
 );

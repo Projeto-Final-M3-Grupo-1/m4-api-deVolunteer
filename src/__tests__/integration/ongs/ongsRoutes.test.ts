@@ -110,13 +110,33 @@ describe("/ong", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(400);
   });
-  /*
+
+  /* test("GET /ong/:id - Must be able to list ONGs by id", async () => {
+    const ong = await request(app).get("/ong");
+    const ongId = ong.body.id;
+
+    const response = await request(app).get(`/news/${ongId}`);
+
+    expect(response.body).toHaveProperty("companyName");
+    expect(response.body).toHaveProperty("email");
+    expect(response.body).toHaveProperty("github");
+    expect(response.body).toHaveProperty("linkedin");
+    expect(response.body).toHaveProperty("profilePicture");
+    expect(response.body).toHaveProperty("cnpj");
+    expect(response.body).toHaveProperty("phone");
+    expect(response.body).toHaveProperty("ownerName");
+    expect(response.body).toHaveProperty("createdAt");
+    expect(response.body).toHaveProperty("updatedAt");
+    expect(response.body).not.toHaveProperty("password");
+    expect(response.status).toEqual(200);
+  }); */
+
   test("DELETE /ong/:id -  should not be able to delete ONG with invalid id", async () => {
-    await request(app).post("/ong").send(mockedAdmin);
+    await request(app).post("/ong").send(mockedDeleteOng);
 
     const adminLoginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
+      .send(mockedOngLogin);
 
     const response = await request(app)
       .delete(`/ong/13970660-5dbe-423a-9a9d-5c23b37943cf`)
@@ -125,13 +145,41 @@ describe("/ong", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("PATCH /ong/:id -  should not be able to update ONG without authentication", async () => {
-    const adminLoginResponse = await request(app)
+  test("PATCH /ong/:id - Must be able to update an ONG", async () => {
+    const loginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
+      .send(mockedOngLogin);
+    const ong = await request(app)
+      .get("/ong")
+      .set("Authorization", `Bearer ${loginResponse.body.token}`);
+    const ongId = ong.body[0].id;
+    const ongValue = { companyName: "Correção" };
+    const response = await request(app)
+      .patch(`/ong/${ongId}`)
+      .send(ongValue)
+      .set("Authorization", `Bearer ${loginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("companyName");
+    expect(response.body).toHaveProperty("email");
+    expect(response.body).toHaveProperty("cnpj");
+    expect(response.body).toHaveProperty("phone");
+    expect(response.body).toHaveProperty("github");
+    expect(response.body).toHaveProperty("ownerName");
+    expect(response.body).toHaveProperty("profilePicture");
+    expect(response.body).toHaveProperty("linkedin");
+
+    expect(response.body.companyName).toEqual(ongValue.companyName);
+    expect(response.status).toBe(200);
+  });
+
+  test("PATCH /ong/:id -  should not be able to update ONG without authentication", async () => {
+    const loginResponse = await request(app)
+      .post("/login")
+      .send(mockedOngLogin);
     const ongTobeUpdate = await request(app)
       .get("/ong")
-      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
+      .set("Authorization", `Bearer ${loginResponse.body.token}`);
     const response = await request(app).patch(
       `/ong/${ongTobeUpdate.body[0].id}`
     );
@@ -143,10 +191,10 @@ describe("/ong", () => {
   test("PATCH /ong/:id - should not be able to update ONG with invalid id", async () => {
     const newValues = { name: "Joana Brito", email: "joanabrito@mail.com" };
 
-    const admingLoginResponse = await request(app)
+    const loginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
-    const token = `Bearer ${admingLoginResponse.body.token}`;
+      .send(mockedOngLogin);
+    const token = `Bearer ${loginResponse.body.token}`;
 
     const ongTobeUpdateRequest = await request(app)
       .get("/ong")
@@ -165,10 +213,10 @@ describe("/ong", () => {
   test("PATCH /ong/:id - should not be able to update isAdm field value", async () => {
     const newValues = { isAdm: false };
 
-    const admingLoginResponse = await request(app)
+    const loginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
-    const token = `Bearer ${admingLoginResponse.body.token}`;
+      .send(mockedOngLogin);
+    const token = `Bearer ${loginResponse.body.token}`;
 
     const ongTobeUpdateRequest = await request(app)
       .get("/ong")
@@ -187,10 +235,10 @@ describe("/ong", () => {
   test("PATCH /ong/:id - should not be able to update isActive field value", async () => {
     const newValues = { isActive: false };
 
-    const admingLoginResponse = await request(app)
+    const loginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
-    const token = `Bearer ${admingLoginResponse.body.token}`;
+      .send(mockedOngLogin);
+    const token = `Bearer ${loginResponse.body.token}`;
 
     const ongTobeUpdateRequest = await request(app)
       .get("/ong")
@@ -208,10 +256,10 @@ describe("/ong", () => {
   test("PATCH /ong/:id - should not be able to update id field value", async () => {
     const newValues = { id: false };
 
-    const admingLoginResponse = await request(app)
+    const loginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
-    const token = `Bearer ${admingLoginResponse.body.token}`;
+      .send(mockedOngLogin);
+    const token = `Bearer ${loginResponse.body.token}`;
 
     const ongTobeUpdateRequest = await request(app)
       .get("/ong")
@@ -224,5 +272,9 @@ describe("/ong", () => {
       .send(newValues);
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
-  }); */
+  });
+
+  //não pode criar faltando algum dado;
+  //não pode criar com e-mail repetido;
+  //cnpj repetido
 });

@@ -1,20 +1,18 @@
 import AppDataSource from "../../data-source";
 import News from "../../entities/news.entity";
-import { iCreateNewsResponse } from "../../interfaces/news";
+import { iNewsResponse } from "../../interfaces/news";
 
-const listNewsByIdService = async (
-	newsId: string
-): Promise<iCreateNewsResponse> => {
-	const newsRepository = AppDataSource.getRepository(News);
+const listNewsByIdService = async (newsId: string): Promise<iNewsResponse> => {
+  const newsRepository = AppDataSource.getRepository(News);
 
-	const news = await newsRepository.find({
-		where: {
-			id: newsId,
-		},
-		withDeleted: true,
-	});
+  const news = await newsRepository.find({
+    where: {
+      id: newsId,
+    },
+    withDeleted: true,
+  });
 
-	return news[0];
+  return news[0];
 };
 
 export default listNewsByIdService;
