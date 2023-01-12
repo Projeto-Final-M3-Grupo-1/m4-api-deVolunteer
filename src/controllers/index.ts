@@ -20,29 +20,31 @@ import updateOngController from "./ongs/updateOng.controller";
 /* Login */
 import loginController from "./login/login.controller";
 
-/* Tasks */
 import createTaskController from "./tasks/tasks.controller";
 import listAllTasksController from "./tasks/listAllTasks.controller";
 import updateTaskcontroller from "./tasks/updateTasks.controller";
 import deleteTaskController from "./tasks/deleteTask.controller";
 
+/* Technologies */
+import insertTechnologiesController from "./technologies/insertTechnologies.controller";
 
 export {
-	listUserController,
-	createUserController,
-	deleteUserController,
-	updateUserController,
-	createNewsController,
-	listNewsController,
-	deleteNewsController,
-	updateNewsController,
-	listNewsByIdController,
-	createOngController,
-	deleteOngController,
-	listOngController,
-	updateOngController,
-	loginController,
-	createTaskController,
+  listUserController,
+  createUserController,
+  deleteUserController,
+  updateUserController,
+  createNewsController,
+  listNewsController,
+  deleteNewsController,
+  updateNewsController,
+  listNewsByIdController,
+  createOngController,
+  deleteOngController,
+  listOngController,
+  updateOngController,
+  loginController,
+  insertTechnologiesController,
+  createTaskController,
 	listAllTasksController,
 	updateTaskcontroller,
 	deleteTaskController
