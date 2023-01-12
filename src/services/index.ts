@@ -10,13 +10,15 @@ import listNewsService from "./news/listNews.service";
 import deleteNewsService from "./news/deleteNews.service";
 import updateNewsService from "./news/updateNews.service";
 
+/* Techs */
+
 export {
-	createUserService,
-	deleteUserService,
-	listUsersService,
-	updateUserService,
-	createNewsService,
-	listNewsService,
-	deleteNewsService,
-	updateNewsService,
+  createUserService,
+  deleteUserService,
+  listUsersService,
+  updateUserService,
+  createNewsService,
+  listNewsService,
+  deleteNewsService,
+  updateNewsService,
 };

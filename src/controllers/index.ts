@@ -10,13 +10,15 @@ import listNewsController from "./news/listNews.controller";
 import deleteNewsController from "./news/deleteNews.controller";
 import updateNewsController from "./news/updateNews.controller";
 
+/* Technoligies */
+
 export {
-	listUserController,
-	createUserController,
-	deleteUserController,
-	updateUserController,
-	createNewsController,
-	listNewsController,
-	deleteNewsController,
-	updateNewsController,
+  listUserController,
+  createUserController,
+  deleteUserController,
+  updateUserController,
+  createNewsController,
+  listNewsController,
+  deleteNewsController,
+  updateNewsController,
 };

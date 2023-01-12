@@ -41,4 +41,11 @@ describe("/users", () => {
     expect(response.body.isActive).toEqual(true);
     expect(response.status).toEqual(201);
   });
+
+  test("POST /users -  should not be able to create a user that already exists", async () => {
+    const response = await request(app).post("/users").send(mockedUser);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(409);
+  });
 });
