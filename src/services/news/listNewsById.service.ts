@@ -1,10 +1,10 @@
 import AppDataSource from "../../data-source";
 import News from "../../entities/news.entity";
-import { iCreateNewsResponse } from "../../interfaces/news";
+import { iNewsResponse } from "../../interfaces/news";
 
 const listNewsByIdService = async (
 	newsId: string
-): Promise<iCreateNewsResponse> => {
+): Promise<iNewsResponse> => {
 	const newsRepository = AppDataSource.getRepository(News);
 
 	const news = await newsRepository.find({

@@ -13,6 +13,10 @@ import listNewsByIdService from "./news/listNewsById.service";
 
 /* Techs */
 
+/* Tasks */
+import createTaskService from "./tasks/createTask.service";
+
+
 export {
 	createUserService,
 	deleteUserService,
@@ -23,4 +27,5 @@ export {
 	deleteNewsService,
 	updateNewsService,
 	listNewsByIdService,
+	createTaskService
 };
