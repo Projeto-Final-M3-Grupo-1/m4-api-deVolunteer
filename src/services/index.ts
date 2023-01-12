@@ -20,19 +20,23 @@ import updateOngService from "./ongs/updateOng.service";
 /* Login */
 import loginService from "./login/login.service";
 
+/* Technologies */
+import insertTechnologiesService from "./technologies/insertTechnologies.service";
+
 export {
-	createUserService,
-	deleteUserService,
-	listUsersService,
-	updateUserService,
-	createNewsService,
-	listNewsService,
-	deleteNewsService,
-	updateNewsService,
-	listNewsByIdService,
-	createOngService,
-	deleteOngService,
-	listOngService,
-	updateOngService,
-	loginService,
+  createUserService,
+  deleteUserService,
+  listUsersService,
+  updateUserService,
+  createNewsService,
+  listNewsService,
+  deleteNewsService,
+  updateNewsService,
+  listNewsByIdService,
+  createOngService,
+  deleteOngService,
+  listOngService,
+  updateOngService,
+  loginService,
+  insertTechnologiesService,
 };
