@@ -161,6 +161,20 @@ describe("/news", () => {
 		expect(response.status).toBe(404);
 	});
 
+	test("PATCH /news/:id - Not admin users must not be able to update news", async () => {
+		const newsValue = { title: "Correção" };
+
+		const userResponse = await request(app).post("/login").send(mockedUser);
+
+		const response = await request(app)
+			.patch(`/news/1`)
+			.set("Authorization", `Bearer ${userResponse.body.token}`)
+			.send(newsValue);
+
+		expect(response.body).toHaveProperty("message");
+		expect(response.status).toBe(403);
+	});
+
 	test("DELETE /news/:id - Must be able to delete news", async () => {
 		const adminUserResponse = await request(app)
 			.post("/login")
@@ -195,5 +209,16 @@ describe("/news", () => {
 
 		expect(response.body).toHaveProperty("message");
 		expect(response.status).toBe(404);
+	});
+
+	test("PATCH /news/:id - Not admin users must not be able to update news", async () => {
+		const userResponse = await request(app).post("/login").send(mockedUser);
+
+		const response = await request(app)
+			.delete(`/news/1`)
+			.set("Authorization", `Bearer ${userResponse.body.token}`);
+
+		expect(response.body).toHaveProperty("message");
+		expect(response.status).toBe(403);
 	});
 });
