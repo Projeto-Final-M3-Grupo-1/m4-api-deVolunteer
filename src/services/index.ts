@@ -20,6 +20,12 @@ import updateOngService from "./ongs/updateOng.service";
 /* Login */
 import loginService from "./login/login.service";
 
+/* Tasks */
+import createTaskService from "./tasks/createTask.service";
+import listAllTasksService from "./tasks/listAllTasks.service";
+import updateTaskService from "./tasks/updateTask.service";
+import deleteTaskService from "./tasks/deleteTask.service";
+
 /* Technologies */
 import insertTechnologiesService from "./technologies/insertTechnologies.service";
 
@@ -39,4 +45,8 @@ export {
   updateOngService,
   loginService,
   insertTechnologiesService,
+  loginService,
+	listAllTasksService,
+	updateTaskService,
+	deleteTaskService
 };

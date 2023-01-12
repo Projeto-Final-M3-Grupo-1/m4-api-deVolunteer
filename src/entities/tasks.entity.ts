@@ -12,7 +12,7 @@ class Task {
   @Column({ default: "pendings" })
   status: string;
 
-  @ManyToOne(() => User, (user) => user.tasks)
+  @ManyToOne(() => User, (user) => user.tasks, { nullable: true })
   user: User;
 }
 

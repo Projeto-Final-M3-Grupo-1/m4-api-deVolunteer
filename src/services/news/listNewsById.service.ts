@@ -1,6 +1,5 @@
 import AppDataSource from "../../data-source";
 import News from "../../entities/news.entity";
-import AppError from "../../errors/appError";
 import { iNewsResponse } from "../../interfaces/news";
 
 const listNewsByIdService = async (newsId: string): Promise<iNewsResponse> => {

@@ -20,6 +20,11 @@ import updateOngController from "./ongs/updateOng.controller";
 /* Login */
 import loginController from "./login/login.controller";
 
+import createTaskController from "./tasks/tasks.controller";
+import listAllTasksController from "./tasks/listAllTasks.controller";
+import updateTaskcontroller from "./tasks/updateTasks.controller";
+import deleteTaskController from "./tasks/deleteTask.controller";
+
 /* Technologies */
 import insertTechnologiesController from "./technologies/insertTechnologies.controller";
 
@@ -39,4 +44,8 @@ export {
   updateOngController,
   loginController,
   insertTechnologiesController,
+  createTaskController,
+	listAllTasksController,
+	updateTaskcontroller,
+	deleteTaskController
 };
