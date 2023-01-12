@@ -6,7 +6,7 @@ import userRouter from "./router/users.routes";
 import { ongRouter } from "./router/ongs.routes";
 import projectRouter from "./router/projects.routes";
 import { loginRouter } from "./router/login.routes";
-import { errorMiddleware } from "./middlewares/error.middleware";
+import { errorMiddleware } from "./middlewares";
 
 const app = express();
 app.use(express.json());

@@ -13,6 +13,16 @@ export const mockedUser: iUserRequest = {
 		"https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
 };
 
+export const mockedAdminUser: iUserRequest = {
+	name: "Gabs Ghidini",
+	email: "gabsghidini@mail.com",
+	isAdm: true,
+	password: "123456",
+	github: "www.github.com",
+	linkedin: "www.linkedin.com",
+	profilePicture: "https://thiscatdoesnotexist.com/",
+};
+
 export const mockedNews = {
 	title: "Olá mundo!",
 	description: "Olá sou a primeira notícia",
@@ -28,22 +38,22 @@ export const mockedToBeDeletedNews = {
 };
 
 export const mockedOng: IOngRequest = {
-  companyName: "ABCDE",
-  email: "abcde@email.com",
-  password: "1234",
-  cnpj: "12345678901219",
-  phone: 219765478,
+	companyName: "ABCDE",
+	email: "abcde@email.com",
+	password: "1234",
+	cnpj: "12345678901219",
+	phone: 219765478,
 };
 
 export const mockedDeleteOng: IOngRequest = {
-  companyName: "Delete ONG",
-  email: "delete@email.com",
-  password: "1234",
-  cnpj: "12345678901210",
-  phone: 219765479,
+	companyName: "Delete ONG",
+	email: "delete@email.com",
+	password: "1234",
+	cnpj: "12345678901210",
+	phone: 219765479,
 };
 
 export const mockedOngLogin: ILogin = {
-  email: "abcde@email.com",
-  password: "1234",
+	email: "abcde@email.com",
+	password: "1234",
 };

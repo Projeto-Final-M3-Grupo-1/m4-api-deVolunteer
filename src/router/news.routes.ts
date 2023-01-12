@@ -6,13 +6,37 @@ import {
 	updateNewsController,
 	listNewsByIdController,
 } from "../controllers";
+import {
+	ensureAuthMiddleware,
+	isAdminMiddleware,
+	isIdValidMiddleware,
+} from "../middlewares";
 const newsRouter = Router();
 
-newsRouter.post("", createNewsController);
-newsRouter.get("", listNewsController);
-newsRouter.delete("/:id", deleteNewsController);
-newsRouter.patch("/:id", updateNewsController);
+newsRouter.post(
+	"",
+	ensureAuthMiddleware,
+	isAdminMiddleware,
+	createNewsController
+);
 
-newsRouter.get("/:id", listNewsByIdController);
+newsRouter.get("", ensureAuthMiddleware, listNewsController);
+
+newsRouter.delete(
+	"/:id",
+	ensureAuthMiddleware,
+	isAdminMiddleware,
+	isIdValidMiddleware,
+	deleteNewsController
+);
+newsRouter.patch(
+	"/:id",
+	ensureAuthMiddleware,
+	isAdminMiddleware,
+	isIdValidMiddleware,
+	updateNewsController
+);
+
+newsRouter.get("/:id", isIdValidMiddleware, listNewsByIdController);
 
 export default newsRouter;

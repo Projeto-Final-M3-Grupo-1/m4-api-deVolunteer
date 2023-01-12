@@ -11,6 +11,15 @@ import deleteNewsService from "./news/deleteNews.service";
 import updateNewsService from "./news/updateNews.service";
 import listNewsByIdService from "./news/listNewsById.service";
 
+/* Ongs */
+import createOngService from "./ongs/createOng.service";
+import deleteOngService from "./ongs/deleteOng.service";
+import listOngService from "./ongs/listOng.service";
+import updateOngService from "./ongs/updateOng.service";
+
+/* Login */
+import loginService from "./login/login.service";
+
 export {
 	createUserService,
 	deleteUserService,
@@ -21,4 +30,9 @@ export {
 	deleteNewsService,
 	updateNewsService,
 	listNewsByIdService,
+	createOngService,
+	deleteOngService,
+	listOngService,
+	updateOngService,
+	loginService,
 };
