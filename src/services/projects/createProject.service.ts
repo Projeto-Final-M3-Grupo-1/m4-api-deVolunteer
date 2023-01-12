@@ -6,7 +6,7 @@ const createProjectService = async (
   project: IprojectRequest
 ): Promise<IprojectResponse> => {
   const projectRepository = AppDataSource.getRepository(Project);
-  const newProject: any = projectRepository.create(project);
+  const newProject: any = await projectRepository.create(project);
   await projectRepository.save(newProject);
 
   return newProject;

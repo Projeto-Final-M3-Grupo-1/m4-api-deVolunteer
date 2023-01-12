@@ -11,6 +11,8 @@ import deleteNewsController from "./news/deleteNews.controller";
 import updateNewsController from "./news/updateNews.controller";
 import listNewsByIdController from "./news/listNewsById.controller";
 
+/* Technoligies */
+
 export {
 	listUserController,
 	createUserController,

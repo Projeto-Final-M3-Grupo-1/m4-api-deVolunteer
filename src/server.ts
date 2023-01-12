@@ -6,6 +6,8 @@ import AppDataSource from "./data-source";
     console.error("Error during Data Source initialization", err);
   });
 
+  //function aqui
+
   app.listen(3000, () => {
     console.log("Servidor executando");
   });
