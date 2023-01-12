@@ -80,6 +80,12 @@ export const mockedOngLogin: ILogin = {
   password: "1234",
 };
 
+
+export const mockedLogin: ILogin = {
+  email: "rafaelquadros@mail.com",
+  password: "123456",
+};
+
 export const mockedTask: ITaskRequest = {
 	title: "Create session"
 };
@@ -92,3 +98,4 @@ export const mockedAdminLogin: ILogin = {
 	email: "gabsghidini@mail.com",
 	password: "123456"
 }
+

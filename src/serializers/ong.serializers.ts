@@ -28,4 +28,7 @@ export const ongUpdateSerializer = yup.object().shape({
   ownerName: yup.string(),
   profilePicture: yup.string().url(),
   linkedin: yup.string().url(),
+  isAdm: yup.boolean(),
+  isActive: yup.boolean(),
+  id: yup.string(),
 });
