@@ -1,5 +1,6 @@
 import { ILogin } from "../../interfaces/login";
 import { IOngRequest } from "../../interfaces/ongs";
+import { ITaskRequest } from "../../interfaces/tasks";
 import { iUserRequest } from "../../interfaces/users";
 
 export const mockedUser: iUserRequest = {
@@ -57,3 +58,16 @@ export const mockedOngLogin: ILogin = {
 	email: "abcde@email.com",
 	password: "1234",
 };
+
+export const mockedTask: ITaskRequest = {
+	title: "Create session"
+};
+
+export const mockedTaskToBeDelete: ITaskRequest = {
+	title: "task to delete"
+};
+
+export const mockedAdminLogin: ILogin = {
+	email: "gabsghidini@mail.com",
+	password: "123456"
+}
