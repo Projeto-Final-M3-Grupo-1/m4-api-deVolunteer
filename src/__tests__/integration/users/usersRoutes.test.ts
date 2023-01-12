@@ -172,6 +172,33 @@ describe("/users", () => {
     expect(response.body).toHaveProperty("message");
   });
 
+  test("PATCH /users/:id -  should be able to update user", async () => {
+    const newValues = { name: "Joana Brito", email: "joanabrito@mail.com" };
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+    const token = `Bearer ${admingLoginResponse.body.token}`;
+
+    const userTobeUpdateRequest = await request(app)
+      .get("/users")
+      .set("Authorization", token);
+    const userTobeUpdateId = userTobeUpdateRequest.body[0].id;
+
+    const response = await request(app)
+      .patch(`/users/${userTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    const userUpdated = await request(app)
+      .get("/users")
+      .set("Authorization", token);
+
+    expect(response.status).toBe(200);
+    expect(userUpdated.body[0].name).toEqual("Joana Brito");
+    expect(userUpdated.body[0]).not.toHaveProperty("password");
+  });
+
   test("PATCH /users/:id -  should not be able to update user without authentication", async () => {
     const adminLoginResponse = await request(app)
       .post("/login")
@@ -188,7 +215,10 @@ describe("/users", () => {
   });
 
   test("PATCH /users/:id - should not be able to update user with invalid id", async () => {
-    const newValues = { name: "Joana Brito", email: "joanabrito@mail.com" };
+    const newValues = {
+      name: "Teste de update",
+      email: "testedeupate@mail.com",
+    };
 
     const admingLoginResponse = await request(app)
       .post("/login")
@@ -297,32 +327,5 @@ describe("/users", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
-  });
-
-  test("PATCH /users/:id -  should be able to update user", async () => {
-    const newValues = { name: "Joana Brito", email: "joanabrito@mail.com" };
-
-    const admingLoginResponse = await request(app)
-      .post("/login")
-      .send(mockedAdminLogin);
-    const token = `Bearer ${admingLoginResponse.body.token}`;
-
-    const userTobeUpdateRequest = await request(app)
-      .get("/users")
-      .set("Authorization", token);
-    const userTobeUpdateId = userTobeUpdateRequest.body[0].id;
-
-    const response = await request(app)
-      .patch(`/users/${userTobeUpdateId}`)
-      .set("Authorization", token)
-      .send(newValues);
-
-    const userUpdated = await request(app)
-      .get("/users")
-      .set("Authorization", token);
-
-    expect(response.status).toBe(200);
-    expect(userUpdated.body[0].name).toEqual("Joana Brito");
-    expect(userUpdated.body[0]).not.toHaveProperty("password");
   });
 });
