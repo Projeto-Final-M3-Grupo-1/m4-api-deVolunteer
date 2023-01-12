@@ -27,6 +27,7 @@ import deleteTaskController from "./tasks/deleteTask.controller";
 
 /* Technologies */
 import insertTechnologiesController from "./technologies/insertTechnologies.controller";
+import listTechnologiesController from "./technologies/listTechnologies.controller";
 
 export {
   listUserController,
@@ -48,4 +49,5 @@ export {
   listAllTasksController,
   updateTaskcontroller,
   deleteTaskController,
+  listTechnologiesController,
 };

@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { insertTechnologiesController } from "../controllers";
-import listTechnologiesController from "../controllers/technologies/listTechnologies.controller";
+import {
+  insertTechnologiesController,
+  listTechnologiesController,
+} from "../controllers";
 import { ensureAuthMiddleware } from "../middlewares";
 
 const techRouter = Router();
