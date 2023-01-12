@@ -4,9 +4,9 @@ import request from "supertest";
 import app from "../../../app";
 import {
   mockedAdmin,
-  mockedAdminLogin,
   mockedUser,
   mockedUserLogin,
+  mockedAdminLogin,
 } from "../../mocks";
 
 describe("/users", () => {

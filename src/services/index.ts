@@ -45,8 +45,8 @@ export {
   updateOngService,
   loginService,
   insertTechnologiesService,
-  loginService,
-	listAllTasksService,
-	updateTaskService,
-	deleteTaskService
+  listAllTasksService,
+  updateTaskService,
+  deleteTaskService,
+  createTaskService,
 };
