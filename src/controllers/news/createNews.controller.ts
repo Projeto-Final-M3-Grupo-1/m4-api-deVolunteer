@@ -3,7 +3,8 @@ import { createNewsService } from "../../services";
 
 const createNewsController = async (req: Request, res: Response) => {
 	const data = req.body;
-	const response = await createNewsService(data);
+	const userId = req.user.id;
+	const response = await createNewsService(data, userId);
 
 	return res.status(201).json(response);
 };

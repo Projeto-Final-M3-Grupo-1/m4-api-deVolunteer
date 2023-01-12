@@ -11,7 +11,14 @@ import deleteNewsController from "./news/deleteNews.controller";
 import updateNewsController from "./news/updateNews.controller";
 import listNewsByIdController from "./news/listNewsById.controller";
 
-/* Technoligies */
+/* Ongs */
+import createOngController from "./ongs/createOng.controller";
+import deleteOngController from "./ongs/deleteOng.controller";
+import listOngController from "./ongs/listOng.controller";
+import updateOngController from "./ongs/updateOng.controller";
+
+/* Login */
+import loginController from "./login/login.controller";
 
 export {
 	listUserController,
@@ -23,4 +30,9 @@ export {
 	deleteNewsController,
 	updateNewsController,
 	listNewsByIdController,
+	createOngController,
+	deleteOngController,
+	listOngController,
+	updateOngController,
+	loginController,
 };
