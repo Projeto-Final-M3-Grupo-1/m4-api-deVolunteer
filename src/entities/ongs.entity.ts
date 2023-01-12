@@ -17,13 +17,13 @@ class Ong {
   @Column()
   companyName: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ unique: true })
   cnpj: string;
 
   @Column()

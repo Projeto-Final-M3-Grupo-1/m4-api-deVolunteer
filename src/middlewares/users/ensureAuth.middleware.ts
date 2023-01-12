@@ -27,6 +27,7 @@ export const ensureAuthMiddleware = async (
       id: decoded.sub as string,
       isAdm: decoded.isAdm as boolean,
       isActive: decoded.isActive as boolean,
+      typeUser: decoded.typeUser as "Dev" | "ONG",
     };
 
     return next();

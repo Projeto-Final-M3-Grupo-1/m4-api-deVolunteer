@@ -1,14 +1,15 @@
 import AppDataSource from "../../data-source";
 import News from "../../entities/news.entity";
+import { iNewsResponse, iUpdateNewsData } from "../../interfaces/news";
 
-const updateNewsService = async (data: any, newsId: string) => {
+const updateNewsService = async (data: iUpdateNewsData, newsId: string) => {
 	const newsRepository = AppDataSource.getRepository(News);
 
-	const oldNews = await newsRepository.findOneBy({
+	const oldNews: iNewsResponse = await newsRepository.findOneBy({
 		id: newsId,
 	});
 
-	const newsUpdated = await newsRepository.create({
+	const newsUpdated: iNewsResponse = await newsRepository.create({
 		...oldNews,
 		...data,
 	});
