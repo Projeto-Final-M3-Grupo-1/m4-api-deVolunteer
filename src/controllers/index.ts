@@ -20,19 +20,23 @@ import updateOngController from "./ongs/updateOng.controller";
 /* Login */
 import loginController from "./login/login.controller";
 
+/* Technologies */
+import insertTechnologiesController from "./technologies/insertTechnologies.controller";
+
 export {
-	listUserController,
-	createUserController,
-	deleteUserController,
-	updateUserController,
-	createNewsController,
-	listNewsController,
-	deleteNewsController,
-	updateNewsController,
-	listNewsByIdController,
-	createOngController,
-	deleteOngController,
-	listOngController,
-	updateOngController,
-	loginController,
+  listUserController,
+  createUserController,
+  deleteUserController,
+  updateUserController,
+  createNewsController,
+  listNewsController,
+  deleteNewsController,
+  updateNewsController,
+  listNewsByIdController,
+  createOngController,
+  deleteOngController,
+  listOngController,
+  updateOngController,
+  loginController,
+  insertTechnologiesController,
 };

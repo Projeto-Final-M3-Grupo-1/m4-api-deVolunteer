@@ -14,6 +14,9 @@ describe("/technologies", () => {
       .catch((err) => {
         console.error("Error during Data Source initialization", err);
       });
+    await request(app).post(
+      `/technologies/${process.env.PG_CODE_FOR_INSERT_TECHS}`
+    );
   });
 
   afterAll(async () => {
@@ -27,11 +30,4 @@ describe("/technologies", () => {
     expect(response.body[0]).toHaveProperty("id");
     expect(response.body[0]).toHaveProperty("name");
   });
-
-  //   test("GET /technologies -  Must be able to list all technologies", async () => {
-  //     const response = await request(app).get("/technologies");
-
-  //     expect(response.body).toHaveLength(1);
-  //     expect(response.status).toBe(200);
-  //   });
 });
