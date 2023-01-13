@@ -30,25 +30,31 @@ import deleteTaskService from "./tasks/deleteTask.service";
 import insertTechnologiesService from "./technologies/insertTechnologies.service";
 import listTechnologiesService from "./technologies/listTechlonogies.service";
 
+/* Profile */
+import listUserProfileByIdService from "./profile/listUserProfileById.service";
+import listOngByIdService from "./profile/listOngProfileById.service";
+
 export {
-  createUserService,
-  deleteUserService,
-  listUsersService,
-  updateUserService,
-  createNewsService,
-  listNewsService,
-  deleteNewsService,
-  updateNewsService,
-  listNewsByIdService,
-  createOngService,
-  deleteOngService,
-  listOngService,
-  updateOngService,
-  loginService,
-  insertTechnologiesService,
-  listAllTasksService,
-  updateTaskService,
-  deleteTaskService,
-  createTaskService,
-  listTechnologiesService,
+	createUserService,
+	deleteUserService,
+	listUsersService,
+	updateUserService,
+	createNewsService,
+	listNewsService,
+	deleteNewsService,
+	updateNewsService,
+	listNewsByIdService,
+	createOngService,
+	deleteOngService,
+	listOngService,
+	updateOngService,
+	loginService,
+	insertTechnologiesService,
+	listAllTasksService,
+	updateTaskService,
+	deleteTaskService,
+	createTaskService,
+	listTechnologiesService,
+	listUserProfileByIdService,
+	listOngByIdService,
 };

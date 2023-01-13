@@ -11,7 +11,7 @@ import {
 	ongUpdateSerializer,
 } from "../serializers/ong.serializers";
 
-export const ongRouter = Router();
+const ongRouter = Router();
 
 ongRouter.post(
 	"",
@@ -20,9 +20,11 @@ ongRouter.post(
 );
 ongRouter.get("", ensureAuthMiddleware, listOngController);
 ongRouter.patch(
-  "/:id",
-  ensureAuthMiddleware,
-  validateSchemaMiddleware(ongUpdateSerializer),
-  updateOngController
+	"/:id",
+	ensureAuthMiddleware,
+	validateSchemaMiddleware(ongUpdateSerializer),
+	updateOngController
 );
 ongRouter.delete("/:id", ensureAuthMiddleware, deleteOngController);
+
+export default ongRouter;
