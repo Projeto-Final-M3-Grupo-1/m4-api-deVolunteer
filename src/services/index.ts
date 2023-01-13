@@ -34,6 +34,7 @@ import listTechnologiesService from "./technologies/listTechlonogies.service";
 /* Profile */
 import listUserProfileByIdService from "./profile/listUserProfileById.service";
 import listOngByIdService from "./profile/listOngProfileById.service";
+import deleteTechnologyService from "./users/deleteTechnology.service";
 
 export {
   createUserService,
@@ -59,4 +60,5 @@ export {
   listUserProfileByIdService,
   listOngByIdService,
   getTechnologieService,
+  deleteTechnologyService,
 };

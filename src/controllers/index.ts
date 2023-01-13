@@ -33,6 +33,7 @@ import listTechnologiesController from "./technologies/listTechnologies.controll
 /* Profile */
 import listUserProfileByIdController from "./profile/listUserProfileById.controller";
 import listOngByIdController from "./profile/listOngProfileById.controller";
+import deleteTechnologyController from "./users/deleteTechnology.controller";
 
 export {
   listUserController,
@@ -58,4 +59,5 @@ export {
   listUserProfileByIdController,
   listOngByIdController,
   getTechnologieController,
+  deleteTechnologyController,
 };

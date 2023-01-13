@@ -1,4 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+} from "typeorm";
 import Technology from "./technologies.entity";
 import User from "./users.entity";
 
@@ -6,6 +11,9 @@ import User from "./users.entity";
 class User_to_Technology {
   @PrimaryGeneratedColumn("uuid")
   id: string;
+
+  @CreateDateColumn()
+  added_in: Date;
 
   @ManyToOne(() => Technology, (technologies) => technologies.id)
   technologies: Technology;
