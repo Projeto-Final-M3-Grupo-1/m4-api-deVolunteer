@@ -3,6 +3,7 @@ import AppDataSource from "../../data-source";
 import Technology from "../../entities/technologies.entity";
 import User from "../../entities/users.entity";
 import User_to_Technology from "../../entities/users_to_technologies.entity";
+import AppError from "../../errors/appError";
 import { IUserData } from "../../interfaces/users";
 
 const getTechnologieService = async (
@@ -21,6 +22,10 @@ const getTechnologieService = async (
     id: technologyId,
   });
 
+  if (!technology) {
+    throw new AppError("Invalid id");
+  }
+
   const userToTechnologyRepository =
     AppDataSource.getRepository(User_to_Technology);
 
@@ -29,7 +34,7 @@ const getTechnologieService = async (
       user: user,
       technologies: technology,
     });
-  userToTechnologyRepository.save(addTechnology);
+  await userToTechnologyRepository.save(addTechnology);
 
   const userAndTechnologies: any = await userRepository
     .createQueryBuilder("users")
