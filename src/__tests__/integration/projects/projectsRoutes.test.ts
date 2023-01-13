@@ -4,9 +4,9 @@ import request from "supertest";
 import app from "../../../app";
 import {
   mockedAdmin,
-  mockedAdminLogin,
   mockedAdminUser,
   mockedOng,
+  mockedOngLogin,
   mockedUser,
 } from "../../mocks";
 import { mockedCreateProject } from "../../mocks/projects";
@@ -20,20 +20,19 @@ describe("/projects", () => {
       .catch((err) => {
         console.error("Error during Data Source initialization", err);
       });
-    await request(app).post("/users").send(mockedUser);
-    await request(app).post("/users").send(mockedAdminUser);
+    await request(app).post("/ong").send(mockedOng);
+    await request(app).post("/users").send(mockedAdmin);
   });
   afterAll(async () => {
     await connection.destroy();
   });
   test("POST /projects - Must be able to create projects", async () => {
-    await request(app).post("/ongs").send(mockedOng);
-    const adminLoginResponse = await request(app)
+    const ongLoginResponse = await request(app)
       .post("/login")
-      .send(mockedAdminLogin);
+      .send(mockedOngLogin);
     const response = await request(app)
       .post("/projects")
-      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`)
+      .set("Authorization", `Bearer ${ongLoginResponse.body.token}`)
       .send(mockedCreateProject);
     expect(response.body).toHaveProperty("id");
     expect(response.body).toHaveProperty("title");
@@ -54,24 +53,24 @@ describe("/projects", () => {
     expect(response.status).toEqual(401);
   });
   test("POST /projects - Not ong users must not be able to create projects", async () => {
-    const userResponse = await request(app).post("/login").send(mockedUser);
+    const userResponse = await request(app).post("/login").send(mockedOng);
     const response = await request(app)
       .post("/projects")
       .set("Authorization", `Bearer ${userResponse.body.token}`)
       .send(mockedCreateProject);
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toEqual(403);
+    expect(response.status).toEqual(409);
   });
   test("GET /projects - Must be able to list projects", async () => {
-    const adminUserResponse = await request(app)
-      .post("/login")
-      .send(mockedAdminUser);
+    const adminUserResponse = await request(app).post("/login").send(mockedOng);
     const response = await request(app)
       .get("/projects")
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`);
     expect(response.body[0]).toHaveProperty("id");
     expect(response.body[0]).toHaveProperty("title");
+    expect(response.body[0]).toHaveProperty("description");
     expect(response.body[0]).toHaveProperty("status");
+    expect(response.body[0]).toHaveProperty("projectsPicture");
     expect(response.status).toEqual(200);
   });
   test("GET /projects - Not logged in users must not be able to list projects", async () => {
@@ -82,20 +81,33 @@ describe("/projects", () => {
   test("PATCH /projects/:id - Must be able to update projects", async () => {
     const adminUserResponse = await request(app)
       .post("/login")
-      .send(mockedAdminUser);
+      .send(mockedAdmin);
     const projects = await request(app)
       .get("/projects")
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`);
-    const projectsId = projects.body[0].id;
-    const projectsValue = { title: "Test Edit" };
+    const projectsId = projects.body.id;
+    console.log(projectsId);
+    const projectsValue = {
+      title: "Test Edit",
+      description: "oioi",
+      projectsPicture: "google.com",
+    };
+    console.log(projectsValue);
     const response = await request(app)
       .patch(`/projects/${projectsId}`)
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`)
       .send(projectsValue);
-    expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("title");
-    expect(response.body).toHaveProperty("status");
+    expect(response.body[0]).toHaveProperty("id");
+    expect(response.body[0]).toHaveProperty("title");
+    expect(response.body[0]).toHaveProperty("description");
+    expect(response.body[0]).toHaveProperty("status");
+    expect(response.body[0]).toHaveProperty("projectsPicture");
     expect(response.body.title).toEqual(projectsValue.title);
+    expect(response.body.description).toEqual(projectsValue.description);
+    expect(response.body.projectsPicture).toEqual(
+      projectsValue.projectsPicture
+    );
+
     expect(response.status).toBe(200);
   });
   test("PATCH /projects/:id - Must not be able to update a non-existing projects", async () => {
