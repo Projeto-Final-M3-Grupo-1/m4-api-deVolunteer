@@ -54,6 +54,12 @@ class User {
   @OneToMany(() => Task, (tasks) => tasks.user)
   tasks: Task[];
 
+  @OneToMany(
+    () => User_to_Technology,
+    (userToTechnologies) => userToTechnologies.user
+  )
+  technologies: User_to_Technology[];
+
   @BeforeUpdate()
   @BeforeInsert()
   hashPassword() {

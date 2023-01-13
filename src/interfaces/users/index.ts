@@ -18,6 +18,7 @@ export interface iUser {
   profilePicture: string;
   isAdm: boolean;
   isActive: boolean;
+  technologies: any;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -29,4 +30,11 @@ export interface iUserUpdate {
   github?: string;
   linkedin?: string;
   profilePicture?: string;
+}
+
+export interface IUserData {
+  id: string;
+  isAdm: boolean;
+  isActive: boolean;
+  typeUser?: "Dev" | "ONG";
 }

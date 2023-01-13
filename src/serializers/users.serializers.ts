@@ -13,6 +13,7 @@ export const CreateUserSerializerWithoutPass: SchemaOf<iUser> = yup
     profilePicture: yup.string().required(),
     isAdm: yup.boolean().notRequired(),
     isActive: yup.boolean().required(),
+    technologies: yup.array().notRequired(),
     createdAt: yup.date().required(),
     updatedAt: yup.date().required(),
     location: yup.string().required(),
