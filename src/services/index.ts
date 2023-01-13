@@ -3,6 +3,7 @@ import createUserService from "./users/createUser.service";
 import deleteUserService from "./users/deleteUser.service";
 import listUsersService from "./users/listUsers.service";
 import updateUserService from "./users/updateUser.service";
+import getTechnologieService from "./users/getTechnology.service";
 
 /* News */
 import createNewsService from "./news/createNews.service";
@@ -33,28 +34,31 @@ import listTechnologiesService from "./technologies/listTechlonogies.service";
 /* Profile */
 import listUserProfileByIdService from "./profile/listUserProfileById.service";
 import listOngByIdService from "./profile/listOngProfileById.service";
+import deleteTechnologyService from "./users/deleteTechnology.service";
 
 export {
-	createUserService,
-	deleteUserService,
-	listUsersService,
-	updateUserService,
-	createNewsService,
-	listNewsService,
-	deleteNewsService,
-	updateNewsService,
-	listNewsByIdService,
-	createOngService,
-	deleteOngService,
-	listOngService,
-	updateOngService,
-	loginService,
-	insertTechnologiesService,
-	listAllTasksService,
-	updateTaskService,
-	deleteTaskService,
-	createTaskService,
-	listTechnologiesService,
-	listUserProfileByIdService,
-	listOngByIdService,
+  createUserService,
+  deleteUserService,
+  listUsersService,
+  updateUserService,
+  createNewsService,
+  listNewsService,
+  deleteNewsService,
+  updateNewsService,
+  listNewsByIdService,
+  createOngService,
+  deleteOngService,
+  listOngService,
+  updateOngService,
+  loginService,
+  insertTechnologiesService,
+  listAllTasksService,
+  updateTaskService,
+  deleteTaskService,
+  createTaskService,
+  listTechnologiesService,
+  listUserProfileByIdService,
+  listOngByIdService,
+  getTechnologieService,
+  deleteTechnologyService,
 };
