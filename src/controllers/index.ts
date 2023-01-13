@@ -3,6 +3,7 @@ import listUserController from "./users/listUsers.controller";
 import createUserController from "./users/createUser.controller";
 import deleteUserController from "./users/deleteUser.controller";
 import updateUserController from "./users/updateUser.controller";
+import getTechnologieController from "./users/getTechnology.controller";
 
 /* News */
 import createNewsController from "./news/createNews.controller";
@@ -34,26 +35,27 @@ import listUserProfileByIdController from "./profile/listUserProfileById.control
 import listOngByIdController from "./profile/listOngProfileById.controller";
 
 export {
-	listUserController,
-	createUserController,
-	deleteUserController,
-	updateUserController,
-	createNewsController,
-	listNewsController,
-	deleteNewsController,
-	updateNewsController,
-	listNewsByIdController,
-	createOngController,
-	deleteOngController,
-	listOngController,
-	updateOngController,
-	loginController,
-	insertTechnologiesController,
-	createTaskController,
-	listAllTasksController,
-	updateTaskcontroller,
-	deleteTaskController,
-	listTechnologiesController,
-	listUserProfileByIdController,
-	listOngByIdController,
+  listUserController,
+  createUserController,
+  deleteUserController,
+  updateUserController,
+  createNewsController,
+  listNewsController,
+  deleteNewsController,
+  updateNewsController,
+  listNewsByIdController,
+  createOngController,
+  deleteOngController,
+  listOngController,
+  updateOngController,
+  loginController,
+  insertTechnologiesController,
+  createTaskController,
+  listAllTasksController,
+  updateTaskcontroller,
+  deleteTaskController,
+  listTechnologiesController,
+  listUserProfileByIdController,
+  listOngByIdController,
+  getTechnologieController,
 };
