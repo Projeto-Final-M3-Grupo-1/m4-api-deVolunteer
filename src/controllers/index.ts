@@ -29,25 +29,31 @@ import deleteTaskController from "./tasks/deleteTask.controller";
 import insertTechnologiesController from "./technologies/insertTechnologies.controller";
 import listTechnologiesController from "./technologies/listTechnologies.controller";
 
+/* Profile */
+import listUserProfileByIdController from "./profile/listUserProfileById.controller";
+import listOngByIdController from "./profile/listOngProfileById.controller";
+
 export {
-  listUserController,
-  createUserController,
-  deleteUserController,
-  updateUserController,
-  createNewsController,
-  listNewsController,
-  deleteNewsController,
-  updateNewsController,
-  listNewsByIdController,
-  createOngController,
-  deleteOngController,
-  listOngController,
-  updateOngController,
-  loginController,
-  insertTechnologiesController,
-  createTaskController,
-  listAllTasksController,
-  updateTaskcontroller,
-  deleteTaskController,
-  listTechnologiesController,
+	listUserController,
+	createUserController,
+	deleteUserController,
+	updateUserController,
+	createNewsController,
+	listNewsController,
+	deleteNewsController,
+	updateNewsController,
+	listNewsByIdController,
+	createOngController,
+	deleteOngController,
+	listOngController,
+	updateOngController,
+	loginController,
+	insertTechnologiesController,
+	createTaskController,
+	listAllTasksController,
+	updateTaskcontroller,
+	deleteTaskController,
+	listTechnologiesController,
+	listUserProfileByIdController,
+	listOngByIdController,
 };
