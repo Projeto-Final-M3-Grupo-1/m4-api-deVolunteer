@@ -6,14 +6,16 @@ import ensureIsActive from "./users/ensureIsActive.middleware";
 import ensureUserExists from "./users/ensureUserExists.middleware";
 import ensureUpdateData from "./users/ensureUpdateData.middleware";
 import ensureIsOwnerOrAdm from "./users/ensureIsOwnerOrAdmin.middleware";
+import ensureOngExistsMiddleware from "./ong/ensureOngExists.middleware";
 
 export {
-  validateSchemaMiddleware,
-  ensureAuthMiddleware,
-  isAdminMiddleware,
-  isIdValidMiddleware,
-  ensureIsActive,
-  ensureUserExists,
-  ensureUpdateData,
-  ensureIsOwnerOrAdm,
+	validateSchemaMiddleware,
+	ensureAuthMiddleware,
+	isAdminMiddleware,
+	isIdValidMiddleware,
+	ensureIsActive,
+	ensureUserExists,
+	ensureUpdateData,
+	ensureIsOwnerOrAdm,
+	ensureOngExistsMiddleware,
 };

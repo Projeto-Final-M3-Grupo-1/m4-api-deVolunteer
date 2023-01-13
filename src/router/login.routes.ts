@@ -4,10 +4,12 @@ import { loginController } from "../controllers";
 import { validateSchemaMiddleware } from "../middlewares";
 import { loginSerializer } from "../serializers/login.serializer";
 
-export const loginRouter = Router();
+const loginRouter = Router();
 
 loginRouter.post(
-  "",
-  validateSchemaMiddleware(loginSerializer),
-  loginController
+	"",
+	validateSchemaMiddleware(loginSerializer),
+	loginController
 );
+
+export default loginRouter;

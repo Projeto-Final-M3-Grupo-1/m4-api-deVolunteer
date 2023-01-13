@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import AppDataSource from "../../data-source";
-import User from "../../entities/users.entity";
+import Ong from "../../entities/ongs.entity";
 import AppError from "../../errors/appError";
 
-const ensureUserExists = async (
+const ensureOngExistsMiddleware = async (
 	req: Request,
 	res: Response,
 	next: NextFunction
@@ -11,18 +11,14 @@ const ensureUserExists = async (
 	if (req.params.id.length < 36) {
 		throw new AppError("Invalid id", 404);
 	}
-
-	const userRepository = AppDataSource.getRepository(User);
-
-	const user = await userRepository.findOneBy({
+	const ongRepository = AppDataSource.getRepository(Ong);
+	const ong = await ongRepository.findOneBy({
 		id: req.params.id,
 	});
-
-	if (!user) {
-		throw new AppError("User dont exists", 404);
+	if (!ong) {
+		throw new AppError("Ong dont exists", 404);
 	}
-
 	return next();
 };
 
-export default ensureUserExists;
+export default ensureOngExistsMiddleware;
