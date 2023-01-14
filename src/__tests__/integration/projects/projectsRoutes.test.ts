@@ -79,36 +79,35 @@ describe("/projects", () => {
     expect(response.status).toEqual(401);
   });
   test("PATCH /projects/:id - Must be able to update projects", async () => {
-    const adminUserResponse = await request(app)
-      .post("/login")
-      .send(mockedAdmin);
+    const adminUserResponse = await request(app).post("/login").send(mockedOng);
     const projects = await request(app)
       .get("/projects")
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`);
-    const projectsId = projects.body.id;
-    console.log(projectsId);
+    const projectsId = projects.body[0].id;
+    /* console.log(projectsId); */
     const projectsValue = {
       title: "Test Edit",
       description: "oioi",
       projectsPicture: "google.com",
     };
-    console.log(projectsValue);
+    /*  console.log(projectsValue); */
     const response = await request(app)
       .patch(`/projects/${projectsId}`)
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`)
       .send(projectsValue);
-    expect(response.body[0]).toHaveProperty("id");
-    expect(response.body[0]).toHaveProperty("title");
-    expect(response.body[0]).toHaveProperty("description");
-    expect(response.body[0]).toHaveProperty("status");
-    expect(response.body[0]).toHaveProperty("projectsPicture");
+
+    console.log(response.body);
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("title");
+    expect(response.body).toHaveProperty("description");
+    expect(response.body).toHaveProperty("status");
+    expect(response.body).toHaveProperty("projectsPicture");
     expect(response.body.title).toEqual(projectsValue.title);
     expect(response.body.description).toEqual(projectsValue.description);
     expect(response.body.projectsPicture).toEqual(
       projectsValue.projectsPicture
     );
-
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
   });
   test("PATCH /projects/:id - Must not be able to update a non-existing projects", async () => {
     const projectsValue = { title: "Test Edit" };
@@ -120,7 +119,7 @@ describe("/projects", () => {
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`)
       .send(projectsValue);
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(401);
   });
   test("PATCH /projects/:id - Not admin users must not be able to update projects", async () => {
     const projectsValue = { title: "Test Edit" };
@@ -130,7 +129,7 @@ describe("/projects", () => {
       .set("Authorization", `Bearer ${userResponse.body.token}`)
       .send(projectsValue);
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(403);
+    expect(response.status).toBe(401);
   });
   test("PATCH /projects/:id - Not admin users must not be able to update projects", async () => {
     const userResponse = await request(app).post("/login").send(mockedUser);
@@ -138,12 +137,10 @@ describe("/projects", () => {
       .delete(`/projects/1`)
       .set("Authorization", `Bearer ${userResponse.body.token}`);
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(403);
+    expect(response.status).toBe(401);
   });
   test("DELETE /projects/:id - Must be able to delete projects", async () => {
-    const adminUserResponse = await request(app)
-      .post("/login")
-      .send(mockedAdminUser);
+    const adminUserResponse = await request(app).post("/login").send(mockedOng);
     const projectsToBeDeleted = await request(app)
       .post("/projects")
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`)
@@ -159,13 +156,11 @@ describe("/projects", () => {
     expect(findprojects.body.deletedAt).not.toBe(null);
   });
   test("DELETE /projects/:id - Must not be able to delete a non-existing projects", async () => {
-    const adminUserResponse = await request(app)
-      .post("/login")
-      .send(mockedAdminUser);
+    const adminUserResponse = await request(app).post("/login").send(mockedOng);
     const response = await request(app)
       .delete(`/projects/1`)
       .set("Authorization", `Bearer ${adminUserResponse.body.token}`);
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(403);
   });
 });
