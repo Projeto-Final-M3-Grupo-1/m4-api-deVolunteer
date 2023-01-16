@@ -1,20 +1,21 @@
 import AppDataSource from "../../data-source";
 import Project from "../../entities/projects.entity";
+import AppError from "../../errors/appError";
 
-const deleteProjectService = async (id: string): Promise<void> => {
+const deleteProjectService = async (projectsId: string) => {
   const projectRepository = AppDataSource.getRepository(Project);
-  const foundProject = await projectRepository.findOneBy({
-    id: id,
+
+  const findprojects = await projectRepository.findOneBy({
+    id: projectsId,
   });
 
-  await projectRepository.update(
-    {
-      id,
-    },
-    {
-      status: "desatived",
-    }
-  );
+  if (!findprojects) {
+    throw new AppError("Task not found", 404);
+  }
+
+  const deleteTask = await projectRepository.remove(findprojects);
+
+  return deleteTask;
 };
 
 export default deleteProjectService;
