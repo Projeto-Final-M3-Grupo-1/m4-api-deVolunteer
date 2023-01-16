@@ -167,6 +167,6 @@ describe("/projects", () => {
       .delete(`/projects/1`)
       .set("Authorization", `Bearer ${ongResponse.body.token}`);
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(403);
   });
 });
