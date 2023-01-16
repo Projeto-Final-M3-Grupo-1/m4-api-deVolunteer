@@ -5,6 +5,7 @@ import {
   deleteTechnologyController,
   deleteUserController,
   getTechnologieController,
+  leaveProjectController,
   listUserController,
   updateUserController,
 } from "../controllers";
@@ -20,7 +21,9 @@ import {
 const userRouter = Router();
 
 userRouter.post("", createUserController);
+
 userRouter.get("", ensureAuthMiddleware, isAdminMiddleware, listUserController);
+
 userRouter.delete(
   "/:id",
   ensureAuthMiddleware,
@@ -29,6 +32,7 @@ userRouter.delete(
   ensureIsActive,
   deleteUserController
 );
+
 userRouter.patch(
   "/:id",
   ensureAuthMiddleware,
@@ -37,20 +41,29 @@ userRouter.patch(
   ensureUpdateData,
   updateUserController
 );
+
 userRouter.post(
   "/technologies/:id",
   ensureAuthMiddleware,
   getTechnologieController
 );
+
 userRouter.delete(
   "/technologies/:id",
   ensureAuthMiddleware,
   deleteTechnologyController
 );
+
 userRouter.post(
   "/projects/:id",
   ensureAuthMiddleware,
   applyOnProjectController
+);
+
+userRouter.delete(
+  "/projects/:id",
+  ensureAuthMiddleware,
+  leaveProjectController
 );
 
 export default userRouter;
