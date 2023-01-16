@@ -1,6 +1,6 @@
-import { IprojectRequest } from "../../../interfaces/projects";
+import { IProjectRequest } from "../../../interfaces/projects";
 
-export const mockedCreateProject: IprojectRequest = {
+export const mockedCreateProject: IProjectRequest = {
   title: "Todos contra fome",
   description: "fazendinha12345",
   projectsPicture:

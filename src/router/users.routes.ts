@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  applyOnProjectController,
   createUserController,
   deleteTechnologyController,
   deleteUserController,
@@ -45,6 +46,11 @@ userRouter.delete(
   "/technologies/:id",
   ensureAuthMiddleware,
   deleteTechnologyController
+);
+userRouter.post(
+  "/projects/:id",
+  ensureAuthMiddleware,
+  applyOnProjectController
 );
 
 export default userRouter;
