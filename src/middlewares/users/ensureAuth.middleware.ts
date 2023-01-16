@@ -1,37 +1,34 @@
 import { NextFunction, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
+import AppError from "../../errors/appError";
 
 const ensureAuthMiddleware = async (
-	req: Request,
-	res: Response,
-	next: NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
-	let token = req.headers.authorization;
+  let token = req.headers.authorization;
 
-	if (!token) {
-		return res.status(401).json({
-			message: "Invalid token",
-		});
-	}
+  if (!token) {
+    throw new AppError("invalid token", 401);
+  }
 
-	token = token.split(" ")[1];
+  token = token.split(" ")[1];
 
-	jwt.verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
-		if (error) {
-			return res.status(401).json({
-				message: error.message,
-			});
-		}
+  jwt.verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
+    if (error) {
+      throw new AppError(error.message, 401);
+    }
 
-		req.user = {
-			id: decoded.sub as string,
-			isAdm: decoded.isAdm as boolean,
-			isActive: decoded.isActive as boolean,
-			typeUser: decoded.typeUser as "Dev" | "ONG",
-		};
+    req.user = {
+      id: decoded.sub as string,
+      isAdm: decoded.isAdm as boolean,
+      isActive: decoded.isActive as boolean,
+      typeUser: decoded.typeUser as "Dev" | "ONG",
+    };
 
-		return next();
-	});
+    return next();
+  });
 };
 
 export default ensureAuthMiddleware;

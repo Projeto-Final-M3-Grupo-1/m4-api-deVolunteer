@@ -3,12 +3,23 @@ import createProjectController from "../controllers/projects/createProject.contr
 import listProjectController from "../controllers/projects/listProject.controller";
 import updateProjectController from "../controllers/projects/updateProject.controller";
 import deleteProjectController from "../controllers/projects/deleteProject.controller";
+import { ensureAuthMiddleware, isAdminMiddleware } from "../middlewares";
 
 const projectRouter = Router();
 
-projectRouter.post("", createProjectController);
-projectRouter.patch("/:id", updateProjectController);
-projectRouter.get("", listProjectController);
-projectRouter.delete("/:id", deleteProjectController);
+projectRouter.post("", ensureAuthMiddleware, createProjectController);
+projectRouter.patch(
+  "/:id",
+  ensureAuthMiddleware,
+  isAdminMiddleware,
+  updateProjectController
+);
+projectRouter.get("", ensureAuthMiddleware, listProjectController);
+projectRouter.delete(
+  "/:id",
+  ensureAuthMiddleware,
+  isAdminMiddleware,
+  deleteProjectController
+);
 
 export default projectRouter;
