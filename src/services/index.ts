@@ -4,6 +4,7 @@ import deleteUserService from "./users/deleteUser.service";
 import listUsersService from "./users/listUsers.service";
 import updateUserService from "./users/updateUser.service";
 import getTechnologieService from "./users/getTechnology.service";
+import applyOnProjectService from "./users/applyOnProject.service";
 
 /* News */
 import createNewsService from "./news/createNews.service";
@@ -61,4 +62,5 @@ export {
   listOngByIdService,
   getTechnologieService,
   deleteTechnologyService,
+  applyOnProjectService,
 };

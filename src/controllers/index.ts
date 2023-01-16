@@ -4,6 +4,7 @@ import createUserController from "./users/createUser.controller";
 import deleteUserController from "./users/deleteUser.controller";
 import updateUserController from "./users/updateUser.controller";
 import getTechnologieController from "./users/getTechnology.controller";
+import applyOnProjectController from "./users/applyOnProject.controller";
 
 /* News */
 import createNewsController from "./news/createNews.controller";
@@ -60,4 +61,5 @@ export {
   listOngByIdController,
   getTechnologieController,
   deleteTechnologyController,
+  applyOnProjectController,
 };

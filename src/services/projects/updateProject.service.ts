@@ -1,11 +1,11 @@
 import AppDataSource from "../../data-source";
 import Project from "../../entities/projects.entity";
-import { IprojectUpdate, IprojectResponse } from "../../interfaces/projects";
+import { IProjectUpdate, IProjectResponse } from "../../interfaces/projects";
 
 const updateUserService = async (
-  projecData: IprojectUpdate,
+  projecData: IProjectUpdate,
   projectId: string
-): Promise<IprojectResponse> => {
+): Promise<IProjectResponse> => {
   const projectRepository = AppDataSource.getRepository(Project);
 
   const foundProject = await projectRepository.findOneBy({
