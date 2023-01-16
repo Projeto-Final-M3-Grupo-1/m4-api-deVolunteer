@@ -43,6 +43,13 @@ describe("/ong", () => {
     expect(response.status).toEqual(201);
   });
 
+  test("POST /ong -  should not be able to create an ONG that already exists", async () => {
+    const response = await request(app).post("/ong").send(mockedOng);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(409);
+  });
+
   test("GET /ong -  Must be able to list ONGs", async () => {
     const {
       body: { token },
@@ -67,6 +74,13 @@ describe("/ong", () => {
     expect(response.status).toEqual(200);
   });
 
+  test("GET /ong -  should not be able to list ONGs without authentication", async () => {
+    const response = await request(app).get("/ong");
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
+  });
+
   test("DELETE /ong -  Must be able to delete an ONG", async () => {
     const {
       body: { token },
@@ -79,20 +93,6 @@ describe("/ong", () => {
     mockedDeleteOng.id = ong.id;
 
     expect(response.status).toEqual(204);
-  });
-
-  test("POST /ong -  should not be able to create an ONG that already exists", async () => {
-    const response = await request(app).post("/ong").send(mockedOng);
-
-    expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(409);
-  });
-
-  test("GET /ong -  should not be able to list ONGs without authentication", async () => {
-    const response = await request(app).get("/ong");
-
-    expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(401);
   });
 
   test("DELETE /ong/:id -  shouldn't be able to delete ONG with isActive = false", async () => {
@@ -108,6 +108,22 @@ describe("/ong", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(400);
+  });
+
+  test("DELETE /ong/:id -  should not be able to delete ONG without authentication", async () => {
+    const loginResponse = await request(app)
+      .post("/login")
+      .send(mockedDeleteOng);
+    const ongTobeDeleted = await request(app)
+      .get("/ong")
+      .set("Authorization", `Bearer ${loginResponse.body.token}`);
+
+    const response = await request(app).delete(
+      `/users/${ongTobeDeleted.body[0].id}`
+    );
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(401);
   });
 
   /* test("GET /ong/:id - Must be able to list ONGs by id", async () => {

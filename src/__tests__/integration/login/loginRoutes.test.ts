@@ -4,6 +4,8 @@ import app from "../../../app";
 import AppDataSource from "../../../data-source";
 
 import {
+  mockedAdmin,
+  mockedAdminLogin,
   mockedLogin,
   mockedOng,
   mockedOngLogin,
@@ -25,6 +27,7 @@ describe("/login", () => {
 
     await request(app).post("/users").send(mockedUser);
     await request(app).post("/ong").send(mockedOng);
+    await request(app).post("/users").send(mockedAdmin);
   });
 
   afterAll(async () => {
@@ -45,35 +48,23 @@ describe("/login", () => {
     expect(response.status).toBe(200);
   });
 
-  test("POST /login -  should not be able to login with incorrect password or email", async () => {
+  test("POST /login -  should not be able to login with incorrect email", async () => {
     const response = await request(app).post("/login").send({
       email: "felipe@mail.com",
-      password: "1234567",
+      password: "123456",
     });
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(403);
   });
 
-  // test("POST /login -  should not be able to login with the user with isActive = false", async () => {
-  //   const loginResponse = await request(app)
-  //     .post("/login")
-  //     .send(mockedUserLogin);
-  //   const findUser = await request(app)
-  //     .get("/users")
-  //     .set("Authorization", `Bearer ${loginResponse.body.token}`);
-  //   await request(app)
-  //     .delete(`/users/${findUser.body[0].id}`)
-  //     .set("Authorization", `Bearer ${loginResponse.body.token}`);
-  //   const findUserTwo = await request(app)
-  //     .get("/users")
-  //     .set("Authorization", `Bearer ${loginResponse.body.token}`);
+  test("POST /login -  should not be able to login with incorrect password", async () => {
+    const response = await request(app).post("/login").send({
+      email: "rafaelquadros@mail.com",
+      password: "1234567",
+    });
 
-  //   const response = await request(app).post("/login").send(mockedLogin);
-  //   expect(response.body).toHaveProperty("message");
-  //   expect(response.status).toBe(403);
-  // });
-
-  //e-mail errado
-  //senha errada
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toBe(403);
+  });
 });
