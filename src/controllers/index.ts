@@ -5,6 +5,7 @@ import deleteUserController from "./users/deleteUser.controller";
 import updateUserController from "./users/updateUser.controller";
 import getTechnologieController from "./users/getTechnology.controller";
 import applyOnProjectController from "./users/applyOnProject.controller";
+import leaveProjectController from "./users/leaveProject.controller";
 
 /* News */
 import createNewsController from "./news/createNews.controller";
@@ -62,4 +63,5 @@ export {
   getTechnologieController,
   deleteTechnologyController,
   applyOnProjectController,
+  leaveProjectController,
 };
