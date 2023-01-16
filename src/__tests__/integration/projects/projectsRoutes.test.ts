@@ -82,10 +82,10 @@ describe("/projects", () => {
     expect(response.status).toEqual(401);
   });
   test("PATCH /projects/:id - Must be able to update projects", async () => {
-    const ongResponse = await request(app).post("/login").send(mockedOng);
+    const adminResponse = await request(app).post("/login").send(mockedAdmin);
     const projects = await request(app)
       .get("/projects")
-      .set("Authorization", `Bearer ${ongResponse.body.token}`);
+      .set("Authorization", `Bearer ${adminResponse.body.token}`);
     const projectsId = projects.body[0].id;
 
     const projectsValue = {
@@ -96,7 +96,7 @@ describe("/projects", () => {
 
     const response = await request(app)
       .patch(`/projects/${projectsId}`)
-      .set("Authorization", `Bearer ${ongResponse.body.token}`)
+      .set("Authorization", `Bearer ${adminResponse.body.token}`)
       .send(projectsValue);
 
     expect(response.body).toHaveProperty("id");
