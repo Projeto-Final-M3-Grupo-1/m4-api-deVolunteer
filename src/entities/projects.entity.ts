@@ -27,7 +27,7 @@ class Project {
   status: string;
 
   @OneToMany(() => Task, (tasks) => tasks.id)
-  tasks: Task;
+  tasks: Task[];
 
   @OneToOne(() => Ong, (ong) => ong.project)
   ong: Ong;

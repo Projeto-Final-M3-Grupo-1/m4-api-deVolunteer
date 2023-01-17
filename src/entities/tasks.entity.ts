@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import Project from "./projects.entity";
 import User from "./users.entity";
 
 @Entity("tasks")
@@ -14,6 +15,9 @@ class Task {
 
   @ManyToOne(() => User, (user) => user.tasks, { nullable: true })
   user: User;
+
+  @ManyToOne(() => Project, (project) => project.tasks)
+  project: Project
 }
 
 export default Task;
