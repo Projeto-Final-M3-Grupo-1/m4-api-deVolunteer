@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import listTechnologiesService from "../../services/technologies/listTechlonogies.service";
+import { listTechnologiesService } from "../../services";
 
 const listTechnologiesController = async (req: Request, res: Response) => {
   const response = await listTechnologiesService();

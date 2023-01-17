@@ -1,6 +1,6 @@
-import { iUserRequest } from "../../../interfaces/users";
+import { IUserRequest } from "../../../interfaces/users";
 
-export const mockedAdminUser: iUserRequest = {
+export const mockedAdminUser: IUserRequest = {
   name: "Gabs Ghidini",
   email: "gabsghidini@mail.com",
   isAdm: true,

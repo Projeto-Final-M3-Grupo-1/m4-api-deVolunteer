@@ -2,11 +2,11 @@ import AppDataSource from "../../data-source";
 import Ong from "../../entities/ongs.entity";
 import User from "../../entities/users.entity";
 import AppError from "../../errors/appError";
-import { iUser, iUserRequest } from "../../interfaces/users";
+import { IUser, IUserRequest } from "../../interfaces/users";
 import { CreateUserSerializerWithoutPass } from "../../serializers/users.serializers";
 import { getLocation } from "../../utils";
 
-const createUserService = async (userData: iUserRequest) => {
+const createUserService = async (userData: IUserRequest) => {
   const userRepository = AppDataSource.getRepository(User);
   const ongRepository = AppDataSource.getRepository(Ong);
 
@@ -30,7 +30,7 @@ const createUserService = async (userData: iUserRequest) => {
   const user = userRepository.create(userData);
   await userRepository.save(user);
 
-  const userWithoutPass: iUser = await CreateUserSerializerWithoutPass.validate(
+  const userWithoutPass: IUser = await CreateUserSerializerWithoutPass.validate(
     user,
     {
       stripUnknown: true,

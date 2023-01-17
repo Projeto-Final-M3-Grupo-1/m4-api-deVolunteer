@@ -10,12 +10,10 @@ const deleteProjectService = async (projectsId: string) => {
   });
 
   if (!findprojects) {
-    throw new AppError("Task not found", 404);
+    throw new AppError("Project not found", 404);
   }
 
-  const deleteTask = await projectRepository.remove(findprojects);
-
-  return deleteTask;
+  await projectRepository.remove(findprojects);
 };
 
 export default deleteProjectService;

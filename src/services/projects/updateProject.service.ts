@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import Project from "../../entities/projects.entity";
 import { IProjectUpdate, IProjectResponse } from "../../interfaces/projects";
 
-const updateUserService = async (
+const updateProjectService = async (
   projecData: IProjectUpdate,
   projectId: string
 ): Promise<IProjectResponse> => {
@@ -22,4 +22,4 @@ const updateUserService = async (
   return projectUpdated;
 };
 
-export default updateUserService;
+export default updateProjectService;

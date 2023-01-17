@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import Ong from "../../entities/ongs.entity";
 import Project from "../../entities/projects.entity";
 import AppError from "../../errors/appError";
-import { IProjectRequest, IProjectResponse } from "../../interfaces/projects";
+import { IProjectRequest } from "../../interfaces/projects";
 import { IUserData } from "../../interfaces/users";
 
 const createProjectService = async (

@@ -5,8 +5,6 @@ import AppDataSource from "../../../data-source";
 
 import {
   mockedAdmin,
-  mockedAdminLogin,
-  mockedLogin,
   mockedOng,
   mockedOngLogin,
   mockedUser,

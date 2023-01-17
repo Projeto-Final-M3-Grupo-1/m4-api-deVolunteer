@@ -1,40 +1,41 @@
 import { Router } from "express";
 import {
-	createNewsController,
-	listNewsController,
-	deleteNewsController,
-	updateNewsController,
-	listNewsByIdController,
+  createNewsController,
+  listNewsController,
+  deleteNewsController,
+  updateNewsController,
+  listNewsByIdController,
 } from "../controllers";
 import {
-	ensureAuthMiddleware,
-	isAdminMiddleware,
-	isIdValidMiddleware,
+  ensureAuthMiddleware,
+  isAdminMiddleware,
+  isIdValidMiddleware,
 } from "../middlewares";
 const newsRouter = Router();
 
 newsRouter.post(
-	"",
-	ensureAuthMiddleware,
-	isAdminMiddleware,
-	createNewsController
+  "",
+  ensureAuthMiddleware,
+  isAdminMiddleware,
+  createNewsController
 );
 
 newsRouter.get("", ensureAuthMiddleware, listNewsController);
 
 newsRouter.delete(
-	"/:id",
-	ensureAuthMiddleware,
-	isAdminMiddleware,
-	isIdValidMiddleware,
-	deleteNewsController
+  "/:id",
+  ensureAuthMiddleware,
+  isAdminMiddleware,
+  isIdValidMiddleware,
+  deleteNewsController
 );
+
 newsRouter.patch(
-	"/:id",
-	ensureAuthMiddleware,
-	isAdminMiddleware,
-	isIdValidMiddleware,
-	updateNewsController
+  "/:id",
+  ensureAuthMiddleware,
+  isAdminMiddleware,
+  isIdValidMiddleware,
+  updateNewsController
 );
 
 newsRouter.get("/:id", isIdValidMiddleware, listNewsByIdController);

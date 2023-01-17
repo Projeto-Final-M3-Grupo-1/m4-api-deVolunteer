@@ -1,20 +1,26 @@
 import { Router } from "express";
-import createProjectController from "../controllers/projects/createProject.controller";
-import listProjectController from "../controllers/projects/listProject.controller";
-import updateProjectController from "../controllers/projects/updateProject.controller";
-import deleteProjectController from "../controllers/projects/deleteProject.controller";
+import {
+  createProjectController,
+  deleteProjectController,
+  listProjectController,
+  updateProjectController,
+} from "../controllers";
+
 import { ensureAuthMiddleware, isAdminMiddleware } from "../middlewares";
 
 const projectRouter = Router();
 
 projectRouter.post("", ensureAuthMiddleware, createProjectController);
+
 projectRouter.patch(
   "/:id",
   ensureAuthMiddleware,
   isAdminMiddleware,
   updateProjectController
 );
+
 projectRouter.get("", ensureAuthMiddleware, listProjectController);
+
 projectRouter.delete(
   "/:id",
   ensureAuthMiddleware,

@@ -1,9 +1,9 @@
 import AppDataSource from "../../data-source";
 import User from "../../entities/users.entity";
-import { iUser } from "../../interfaces/users";
+import { IUser } from "../../interfaces/users";
 import { ListUsersWithoutPass } from "../../serializers/users.serializers";
 
-const listUsersService = async (): Promise<iUser[]> => {
+const listUsersService = async (): Promise<IUser[]> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const users = await userRepository.find();

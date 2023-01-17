@@ -126,26 +126,6 @@ describe("/ong", () => {
     expect(response.status).toBe(401);
   });
 
-  /* test("GET /ong/:id - Must be able to list ONGs by id", async () => {
-    const ong = await request(app).get("/ong");
-    const ongId = ong.body.id;
-
-    const response = await request(app).get(`/news/${ongId}`);
-
-    expect(response.body).toHaveProperty("companyName");
-    expect(response.body).toHaveProperty("email");
-    expect(response.body).toHaveProperty("github");
-    expect(response.body).toHaveProperty("linkedin");
-    expect(response.body).toHaveProperty("profilePicture");
-    expect(response.body).toHaveProperty("cnpj");
-    expect(response.body).toHaveProperty("phone");
-    expect(response.body).toHaveProperty("ownerName");
-    expect(response.body).toHaveProperty("createdAt");
-    expect(response.body).toHaveProperty("updatedAt");
-    expect(response.body).not.toHaveProperty("password");
-    expect(response.status).toEqual(200);
-  }); */
-
   test("DELETE /ong/:id -  should not be able to delete ONG with invalid id", async () => {
     await request(app).post("/ong").send(mockedDeleteOng);
 
@@ -288,8 +268,4 @@ describe("/ong", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
   });
-
-  //não pode criar faltando algum dado;
-  //não pode criar com e-mail repetido;
-  //cnpj repetido
 });

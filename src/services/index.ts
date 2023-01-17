@@ -38,6 +38,12 @@ import listUserProfileByIdService from "./profile/listUserProfileById.service";
 import listOngByIdService from "./profile/listOngProfileById.service";
 import deleteTechnologyService from "./users/deleteTechnology.service";
 
+/* Projects */
+import createProjectService from "./projects/createProject.service";
+import deleteProjectService from "./projects/deleteProject.service";
+import listProjectService from "./projects/listProject.service";
+import updateProjectService from "./projects/updateProject.service";
+
 export {
   createUserService,
   deleteUserService,
@@ -65,4 +71,8 @@ export {
   deleteTechnologyService,
   applyOnProjectService,
   leaveProjectService,
+  createProjectService,
+  deleteProjectService,
+  listProjectService,
+  updateProjectService,
 };

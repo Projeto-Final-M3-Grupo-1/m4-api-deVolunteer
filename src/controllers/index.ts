@@ -31,11 +31,17 @@ import deleteTaskController from "./tasks/deleteTask.controller";
 /* Technologies */
 import insertTechnologiesController from "./technologies/insertTechnologies.controller";
 import listTechnologiesController from "./technologies/listTechnologies.controller";
+import deleteTechnologyController from "./users/deleteTechnology.controller";
 
 /* Profile */
 import listUserProfileByIdController from "./profile/listUserProfileById.controller";
 import listOngByIdController from "./profile/listOngProfileById.controller";
-import deleteTechnologyController from "./users/deleteTechnology.controller";
+
+/* Projects */
+import createProjectController from "./projects/createProject.controller";
+import deleteProjectController from "./projects/deleteProject.controller";
+import updateProjectController from "./projects/updateProject.controller";
+import listProjectController from "./projects/listProject.controller";
 
 export {
   listUserController,
@@ -64,4 +70,8 @@ export {
   deleteTechnologyController,
   applyOnProjectController,
   leaveProjectController,
+  createProjectController,
+  deleteProjectController,
+  updateProjectController,
+  listProjectController,
 };
