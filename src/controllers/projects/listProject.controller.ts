@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import listProjectService from "../../services/projects/listProject.service";
 
 const listProjectController = async (req: Request, res: Response) => {
-  const allProjects = await listProjectService();
+  const response = await listProjectService();
 
-  res.status(200).json(allProjects);
+  res.status(200).json(response);
 };
 
 export default listProjectController;

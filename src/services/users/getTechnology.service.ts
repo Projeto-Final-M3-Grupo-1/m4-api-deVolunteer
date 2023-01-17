@@ -1,4 +1,3 @@
-import { RelationId } from "typeorm";
 import AppDataSource from "../../data-source";
 import Technology from "../../entities/technologies.entity";
 import User from "../../entities/users.entity";

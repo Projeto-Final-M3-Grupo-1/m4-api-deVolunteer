@@ -9,13 +9,10 @@ import {
   mockedAdminLogin,
   mockedOng,
   mockedOngLogin,
-} from "../../mocks";
-import {
   mockedDeletedUser,
   mockedProjectId,
   mockedUserToProjects,
-} from "../../mocks/users";
-import { iUser } from "../../../interfaces/users";
+} from "../../mocks";
 
 describe("/users", () => {
   let connection: DataSource;
@@ -206,9 +203,11 @@ describe("/users", () => {
     const adminLoginResponse = await request(app)
       .post("/login")
       .send(mockedAdminLogin);
+
     const userTobeUpdate = await request(app)
       .get("/users")
       .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
+
     const response = await request(app).patch(
       `/users/${userTobeUpdate.body[0].id}`
     );
@@ -227,11 +226,6 @@ describe("/users", () => {
       .post("/login")
       .send(mockedAdminLogin);
     const token = `Bearer ${admingLoginResponse.body.token}`;
-
-    const userTobeUpdateRequest = await request(app)
-      .get("/users")
-      .set("Authorization", token);
-    const userTobeUpdateId = userTobeUpdateRequest.body[0].id;
 
     const response = await request(app)
       .patch(`/users/13970660-5dbe-423a-9a9d-5c23b37943cf`)
@@ -291,11 +285,13 @@ describe("/users", () => {
     const admingLoginResponse = await request(app)
       .post("/login")
       .send(mockedAdminLogin);
+
     const token = `Bearer ${admingLoginResponse.body.token}`;
 
     const userTobeUpdateRequest = await request(app)
       .get("/users")
       .set("Authorization", token);
+
     const userTobeUpdateId = userTobeUpdateRequest.body[0].id;
 
     const response = await request(app)
@@ -312,15 +308,19 @@ describe("/users", () => {
     const userLoginResponse = await request(app)
       .post("/login")
       .send(mockedUser);
+
     const admingLoginResponse = await request(app)
       .post("/login")
       .send(mockedAdminLogin);
+
     const userToken = `Bearer ${userLoginResponse.body.token}`;
+
     const adminToken = `Bearer ${admingLoginResponse.body.token}`;
 
     const userTobeUpdateRequest = await request(app)
       .get("/users")
       .set("Authorization", adminToken);
+
     const userTobeUpdateId = userTobeUpdateRequest.body[1].id;
 
     const response = await request(app)
@@ -331,8 +331,6 @@ describe("/users", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
   });
-
-  //Users to Projects
 
   test("POST /users/projects/:id -  Must be able to apply to a project", async () => {
     await request(app).post("/users").send(mockedUser);
@@ -345,18 +343,9 @@ describe("/users", () => {
 
     mockedProjectId.id = newProject.body.id;
 
-    const admingLoginResponse = await request(app)
-      .post("/login")
-      .send(mockedAdminLogin);
-    const tokenAdmin = `Bearer ${admingLoginResponse.body.token}`;
-
     const loginUser = await request(app).post("/login").send(mockedUserLogin);
 
     const tokenUser = `Bearer ${loginUser.body.token}`;
-
-    const users = await request(app)
-      .get("/users")
-      .set("Authorization", tokenAdmin);
 
     const response = await request(app)
       .post(`/users/projects/${newProject.body.id}`)
@@ -375,6 +364,7 @@ describe("/users", () => {
     await request(app).post("/users").send(mockedUser);
     const loginOng = await request(app).post("/login").send(mockedOngLogin);
     const tokenOng = `Bearer ${loginOng.body.token}`;
+
     const newProject = await request(app)
       .post("/projects")
       .send(mockedUserToProjects)
@@ -389,10 +379,6 @@ describe("/users", () => {
   });
 
   test("DELETE /users/projects/:id -  should not be able to leave a project without authentication", async () => {
-    const loginResponse = await request(app)
-      .post("/users/projects/:id")
-      .send(mockedUserLogin);
-
     const response = await request(app).delete(
       `/users/projects/${mockedProjectId.id}`
     );

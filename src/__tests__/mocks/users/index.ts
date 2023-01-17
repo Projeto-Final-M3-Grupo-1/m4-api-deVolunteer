@@ -1,8 +1,8 @@
 import { ILogin } from "../../../interfaces/login";
 import { IProjectRequest } from "../../../interfaces/projects";
-import { iUser, iUserRequest } from "../../../interfaces/users";
+import { IUserRequest } from "../../../interfaces/users";
 
-export const mockedAdmin: iUserRequest = {
+export const mockedAdmin: IUserRequest = {
   name: "Rafael Quadros",
   email: "rafaelquadros@mail.com",
   isAdm: true,
@@ -13,7 +13,7 @@ export const mockedAdmin: iUserRequest = {
     "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
 };
 
-export const mockedUser: iUserRequest = {
+export const mockedUser: IUserRequest = {
   name: "bruno",
   email: "bruno@mail.com",
   isAdm: false,
@@ -41,7 +41,7 @@ export const mockedUserToProjects: IProjectRequest = {
   status: "pending",
 };
 
-export const mockedDeletedUser: iUserRequest = {
+export const mockedDeletedUser: IUserRequest = {
   name: "bruno",
   email: "deleted@mail.com",
   isAdm: false,

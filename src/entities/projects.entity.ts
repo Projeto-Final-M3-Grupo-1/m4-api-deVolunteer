@@ -4,11 +4,9 @@ import {
   Column,
   OneToMany,
   OneToOne,
-  JoinColumn,
 } from "typeorm";
 import Ong from "./ongs.entity";
 import Task from "./tasks.entity";
-import User from "./users.entity";
 import User_to_Project from "./users_to.projects.entity";
 
 @Entity("projects")

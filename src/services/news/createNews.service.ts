@@ -1,25 +1,25 @@
 import AppDataSource from "../../data-source";
 import News from "../../entities/news.entity";
 import User from "../../entities/users.entity";
-import { iCreateNewsData, iNewsResponse } from "../../interfaces/news";
+import { ICreateNewsData, INewsResponse } from "../../interfaces/news";
 
 const createNewsService = async (
-	newsData: iCreateNewsData,
-	userId: string
-): Promise<iNewsResponse> => {
-	const newsRepository = AppDataSource.getRepository(News);
-	const userRepository = AppDataSource.getRepository(User);
+  newsData: ICreateNewsData,
+  userId: string
+): Promise<INewsResponse> => {
+  const newsRepository = AppDataSource.getRepository(News);
+  const userRepository = AppDataSource.getRepository(User);
 
-	const userFound = await userRepository.findOneBy({ id: userId });
+  const userFound = await userRepository.findOneBy({ id: userId });
 
-	const news = newsRepository.create({
-		...newsData,
-		user: userFound,
-	});
+  const news = newsRepository.create({
+    ...newsData,
+    user: userFound,
+  });
 
-	await newsRepository.save(news);
+  await newsRepository.save(news);
 
-	return news;
+  return news;
 };
 
 export default createNewsService;

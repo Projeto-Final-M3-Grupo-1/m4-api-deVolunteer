@@ -1,8 +1,8 @@
 import * as yup from "yup";
 import { SchemaOf } from "yup";
-import { iUser, iUserRequest } from "../interfaces/users";
+import { IUser } from "../interfaces/users";
 
-export const CreateUserSerializerWithoutPass: SchemaOf<iUser> = yup
+export const CreateUserSerializerWithoutPass: SchemaOf<IUser> = yup
   .object()
   .shape({
     id: yup.string().required(),
@@ -30,6 +30,6 @@ export const CreateUserSerializerRequest = yup.object().shape({
   location: yup.string().required(),
 });
 
-export const ListUsersWithoutPass: SchemaOf<iUser[]> = yup.array(
+export const ListUsersWithoutPass: SchemaOf<IUser[]> = yup.array(
   CreateUserSerializerWithoutPass
 );

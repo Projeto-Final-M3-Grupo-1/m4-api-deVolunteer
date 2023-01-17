@@ -1,4 +1,4 @@
-export interface iUserRequest {
+export interface IUserRequest {
   id?: string;
   name: string;
   email: string;
@@ -10,7 +10,7 @@ export interface iUserRequest {
   location?: string;
 }
 
-export interface iUser {
+export interface IUser {
   id: string;
   name: string;
   email: string;
@@ -24,7 +24,7 @@ export interface iUser {
   updatedAt: Date;
 }
 
-export interface iUserUpdate {
+export interface IUserUpdate {
   name?: string;
   email?: string;
   password?: string;
