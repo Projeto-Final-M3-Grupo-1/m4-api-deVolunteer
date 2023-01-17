@@ -10,7 +10,6 @@ import {
   OneToMany,
 } from "typeorm";
 import Task from "./tasks.entity";
-import Technology from "./technologies.entity";
 import User_to_Technology from "./users_to_technologies.entity";
 
 @Entity("users")

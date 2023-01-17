@@ -1,12 +1,12 @@
 import AppDataSource from "../../data-source";
 import User from "../../entities/users.entity";
-import { iUser, iUserUpdate } from "../../interfaces/users";
+import { IUser, IUserUpdate } from "../../interfaces/users";
 import { CreateUserSerializerWithoutPass } from "../../serializers/users.serializers";
 
 const updateUserService = async (
-  userData: iUserUpdate,
+  userData: IUserUpdate,
   userId: string
-): Promise<iUser> => {
+): Promise<IUser> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const findUser = await userRepository.findOneBy({

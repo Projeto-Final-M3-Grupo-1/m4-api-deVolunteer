@@ -4,8 +4,8 @@ import { updateUserService } from "../../services";
 const updateUserController = async (req: Request, res: Response) => {
   const userData = req.body;
   const userId = req.params.id;
-  const updatedUser = await updateUserService(userData, userId);
+  const response = await updateUserService(userData, userId);
 
-  return res.status(200).json(updatedUser);
+  return res.status(200).json(response);
 };
 export default updateUserController;

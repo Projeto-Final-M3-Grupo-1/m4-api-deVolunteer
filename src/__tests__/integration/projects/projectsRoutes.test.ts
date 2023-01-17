@@ -8,11 +8,10 @@ import {
   mockedOng,
   mockedOngLogin,
   mockedUser,
-} from "../../mocks";
-import {
   mockedCreateProject,
   mockedToBeDeletedProject,
-} from "../../mocks/projects";
+} from "../../mocks";
+
 describe("/projects", () => {
   let connection: DataSource;
   beforeAll(async () => {
@@ -26,9 +25,11 @@ describe("/projects", () => {
     await request(app).post("/ong").send(mockedOng);
     await request(app).post("/users").send(mockedAdmin);
   });
+
   afterAll(async () => {
     await connection.destroy();
   });
+
   test("POST /projects - Must be able to create projects", async () => {
     const ongLoginResponse = await request(app)
       .post("/login")
@@ -48,6 +49,7 @@ describe("/projects", () => {
     expect(response.body.projectsPicture);
     expect(response.status).toEqual(201);
   });
+
   test("POST /projects - Not logged in ongs must not be able to create projects", async () => {
     const response = await request(app)
       .post("/projects")
@@ -55,6 +57,7 @@ describe("/projects", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toEqual(401);
   });
+
   test("POST /projects - Not ong users must not be able to create projects", async () => {
     const ongResponse = await request(app).post("/login").send(mockedOng);
     const response = await request(app)
@@ -64,6 +67,7 @@ describe("/projects", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toEqual(409);
   });
+
   test("GET /projects - Must be able to list projects", async () => {
     const ongResponse = await request(app).post("/login").send(mockedOng);
     const response = await request(app)
@@ -76,11 +80,13 @@ describe("/projects", () => {
     expect(response.body[0]).toHaveProperty("projectsPicture");
     expect(response.status).toEqual(200);
   });
+
   test("GET /projects - Not logged in users must not be able to list projects", async () => {
     const response = await request(app).get("/projects");
     expect(response.body).toHaveProperty("message");
     expect(response.status).toEqual(401);
   });
+
   test("PATCH /projects/:id - Must be able to update projects", async () => {
     const adminResponse = await request(app).post("/login").send(mockedAdmin);
     const projects = await request(app)
@@ -111,6 +117,7 @@ describe("/projects", () => {
     );
     expect(response.status).toBe(201);
   });
+
   test("PATCH /projects/:id - Must not be able to update a non-existing projects", async () => {
     const projectsValue = { title: "Test Edit" };
     const adminResponse = await request(app)
@@ -123,6 +130,7 @@ describe("/projects", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
   });
+
   test("PATCH /projects/:id - Not admin users must not be able to update projects", async () => {
     const projectsValue = { title: "Test Edit" };
     const userResponse = await request(app).post("/login").send(mockedUser);
@@ -133,6 +141,7 @@ describe("/projects", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
   });
+
   test("PATCH /projects/:id - Not admin users must not be able to update projects", async () => {
     const userResponse = await request(app).post("/login").send(mockedUser);
     const response = await request(app)
@@ -141,7 +150,8 @@ describe("/projects", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
   });
-  test("DELETE /orjects/:id - Must be able to delete projects", async () => {
+
+  test("DELETE /projects/:id - Must be able to delete projects", async () => {
     const admResponse = await request(app).post("/login").send(mockedAdmin);
 
     const projectsToBedeleted = await request(app)
@@ -161,6 +171,7 @@ describe("/projects", () => {
     expect(response.status).toBe(204);
     expect(findProjects.body.deletedAt).not.toBe(null);
   });
+
   test("DELETE /projects/:id - Must not be able to delete a non-existing projects", async () => {
     const ongResponse = await request(app).post("/login").send(mockedOng);
     const response = await request(app)

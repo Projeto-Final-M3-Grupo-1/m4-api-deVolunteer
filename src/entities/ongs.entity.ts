@@ -7,7 +7,10 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
+import Project from "./projects.entity";
 
 @Entity("ongs")
 class Ong {
@@ -49,6 +52,10 @@ class Ong {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => Project, (project) => project.ong)
+  @JoinColumn()
+  project: Project;
 
   @BeforeUpdate()
   @BeforeInsert()

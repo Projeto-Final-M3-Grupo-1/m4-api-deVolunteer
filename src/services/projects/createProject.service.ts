@@ -1,19 +1,31 @@
 import AppDataSource from "../../data-source";
+import Ong from "../../entities/ongs.entity";
 import Project from "../../entities/projects.entity";
 import AppError from "../../errors/appError";
-import { IprojectRequest, IprojectResponse } from "../../interfaces/projects";
+import { IProjectRequest } from "../../interfaces/projects";
+import { IUserData } from "../../interfaces/users";
 
 const createProjectService = async (
-  project: IprojectRequest
-): Promise<IprojectResponse> => {
+  project: IProjectRequest,
+  userData: IUserData
+): Promise<Project> => {
   const projectRepository = AppDataSource.getRepository(Project);
+  const ongRepository = AppDataSource.getRepository(Ong);
+
   const projectExist = await projectRepository.findOneBy({
     title: project.title,
   });
   if (projectExist) {
     throw new AppError("Project already exists", 409);
   }
-  const newProject: any = await projectRepository.create(project);
+
+  const ong = await ongRepository.findOneBy({
+    id: userData.id,
+  });
+
+  project.ong = ong;
+
+  const newProject: Project = await projectRepository.create(project);
   await projectRepository.save(newProject);
 
   return newProject;

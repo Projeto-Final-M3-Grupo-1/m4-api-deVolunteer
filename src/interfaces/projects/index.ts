@@ -1,11 +1,14 @@
-export interface IprojectRequest {
+import Ong from "../../entities/ongs.entity";
+
+export interface IProjectRequest {
   title: string;
   description: string;
   projectsPicture: string;
   status: string;
+  ong?: Ong;
 }
 
-export interface IprojectResponse {
+export interface IProjectResponse {
   id: string;
   title: string;
   description: string;
@@ -15,7 +18,7 @@ export interface IprojectResponse {
   status: string;
 }
 
-export interface IprojectUpdate {
+export interface IProjectUpdate {
   title: string;
   description: string;
   projectsPicture: string;

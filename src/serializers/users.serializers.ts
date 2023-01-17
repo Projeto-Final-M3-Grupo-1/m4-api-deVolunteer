@@ -1,8 +1,8 @@
 import * as yup from "yup";
 import { SchemaOf } from "yup";
-import { iUser, iUserRequest } from "../interfaces/users";
+import { IUser } from "../interfaces/users";
 
-export const CreateUserSerializerWithoutPass: SchemaOf<iUser> = yup
+export const CreateUserSerializerWithoutPass: SchemaOf<IUser> = yup
   .object()
   .shape({
     id: yup.string().required(),
@@ -19,19 +19,17 @@ export const CreateUserSerializerWithoutPass: SchemaOf<iUser> = yup
     location: yup.string().required(),
   });
 
-export const CreateUserSerializerRequest: SchemaOf<iUserRequest> = yup
-  .object()
-  .shape({
-    name: yup.string().required(),
-    email: yup.string().required(),
-    password: yup.string().required(),
-    github: yup.string().required(),
-    linkedin: yup.string().required(),
-    profilePicture: yup.string().required(),
-    isAdm: yup.boolean().notRequired(),
-    location: yup.string().required(),
-  });
+export const CreateUserSerializerRequest = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().required(),
+  password: yup.string().required(),
+  github: yup.string().required(),
+  linkedin: yup.string().required(),
+  profilePicture: yup.string().required(),
+  isAdm: yup.boolean().notRequired(),
+  location: yup.string().required(),
+});
 
-export const ListUsersWithoutPass: SchemaOf<iUser[]> = yup.array(
+export const ListUsersWithoutPass: SchemaOf<IUser[]> = yup.array(
   CreateUserSerializerWithoutPass
 );

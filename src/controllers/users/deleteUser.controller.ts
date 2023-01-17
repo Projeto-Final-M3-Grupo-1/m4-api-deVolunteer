@@ -4,9 +4,9 @@ import { deleteUserService } from "../../services";
 const deleteUserController = async (req: Request, res: Response) => {
   const userId = req.params.id;
 
-  const user = await deleteUserService(userId);
+  await deleteUserService(userId);
 
-  return res.status(204).json(user);
+  return res.status(204).send();
 };
 
 export default deleteUserController;

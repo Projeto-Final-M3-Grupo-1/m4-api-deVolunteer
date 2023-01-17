@@ -4,6 +4,8 @@ import deleteUserService from "./users/deleteUser.service";
 import listUsersService from "./users/listUsers.service";
 import updateUserService from "./users/updateUser.service";
 import getTechnologieService from "./users/getTechnology.service";
+import applyOnProjectService from "./users/applyOnProject.service";
+import leaveProjectService from "./users/leaveProject.service";
 
 /* News */
 import createNewsService from "./news/createNews.service";
@@ -36,6 +38,12 @@ import listUserProfileByIdService from "./profile/listUserProfileById.service";
 import listOngByIdService from "./profile/listOngProfileById.service";
 import deleteTechnologyService from "./users/deleteTechnology.service";
 
+/* Projects */
+import createProjectService from "./projects/createProject.service";
+import deleteProjectService from "./projects/deleteProject.service";
+import listProjectService from "./projects/listProject.service";
+import updateProjectService from "./projects/updateProject.service";
+
 export {
   createUserService,
   deleteUserService,
@@ -61,4 +69,10 @@ export {
   listOngByIdService,
   getTechnologieService,
   deleteTechnologyService,
+  applyOnProjectService,
+  leaveProjectService,
+  createProjectService,
+  deleteProjectService,
+  listProjectService,
+  updateProjectService,
 };
