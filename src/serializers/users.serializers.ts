@@ -19,18 +19,16 @@ export const CreateUserSerializerWithoutPass: SchemaOf<iUser> = yup
     location: yup.string().required(),
   });
 
-export const CreateUserSerializerRequest: SchemaOf<iUserRequest> = yup
-  .object()
-  .shape({
-    name: yup.string().required(),
-    email: yup.string().required(),
-    password: yup.string().required(),
-    github: yup.string().required(),
-    linkedin: yup.string().required(),
-    profilePicture: yup.string().required(),
-    isAdm: yup.boolean().notRequired(),
-    location: yup.string().required(),
-  });
+export const CreateUserSerializerRequest = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().required(),
+  password: yup.string().required(),
+  github: yup.string().required(),
+  linkedin: yup.string().required(),
+  profilePicture: yup.string().required(),
+  isAdm: yup.boolean().notRequired(),
+  location: yup.string().required(),
+});
 
 export const ListUsersWithoutPass: SchemaOf<iUser[]> = yup.array(
   CreateUserSerializerWithoutPass
