@@ -34,19 +34,9 @@ const createTaskService = async (
 
   await tasksRepository.save(newTask);
 
-  const response = await projectRepository.findOne({
-    where: {
-      id: projectId
-    },
-    relations: {
-      tasks: true
-    }
-  })
+const taskVlidated = await returnTaskSerrializer.validate(newTask)
 
-  console.log(response);
-  
-
-  return response;
+  return taskVlidated;
 };
 
 export default createTaskService;
