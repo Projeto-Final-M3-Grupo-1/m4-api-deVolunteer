@@ -15,9 +15,6 @@ class Task {
 
   @ManyToOne(() => User, (user) => user.tasks, { nullable: true })
   user: User;
-
-  @ManyToOne(() => Project, (project) => project.tasks)
-  project: Project
 }
 
 export default Task;

@@ -1,7 +1,7 @@
 import AppDataSource from "../../data-source";
 import Project from "../../entities/projects.entity";
 import User from "../../entities/users.entity";
-import User_to_Project from "../../entities/users_to.projects.entity";
+import User_to_Project from "../../entities/users_to_projects.entity";
 import AppError from "../../errors/appError";
 import { IUserData } from "../../interfaces/users";
 

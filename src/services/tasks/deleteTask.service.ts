@@ -1,11 +1,14 @@
 import AppDataSource from "../../data-source";
 import Task from "../../entities/tasks.entity";
+import Tasks_to_Projects from "../../entities/tasks_to_projects.entity";
 import AppError from "../../errors/appError";
 
 const deleteTaskService = async (taskId: string) => {
   const taskRepository = AppDataSource.getRepository(Task);
+  const tasksToProjectsRepository =
+    AppDataSource.getRepository(Tasks_to_Projects);
 
-  const findTask = await taskRepository.findOneBy({
+  const findTask: any = await taskRepository.findOneBy({
     id: taskId,
   });
 
@@ -13,7 +16,12 @@ const deleteTaskService = async (taskId: string) => {
     throw new AppError("Task not found", 404);
   }
 
-  await taskRepository.remove(findTask);
+  const taskInProject: any = await tasksToProjectsRepository.findOneBy({
+    task: findTask,
+  });
+
+  await tasksToProjectsRepository.delete({ id: taskInProject.id });
+  await taskRepository.delete({ id: findTask.id });
 };
 
 export default deleteTaskService;
