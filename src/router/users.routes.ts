@@ -76,15 +76,15 @@ userRouter.delete(
 
 userRouter.post(
   "/tasks/:id",
-  ensureAuthMiddleware,
   ensureIsIdValidMiddleware,
+  ensureAuthMiddleware,
   applyOnTaskController
 );
 
 userRouter.post(
   "/tasks/:id/concluded",
-  ensureAuthMiddleware,
   ensureIsIdValidMiddleware,
+  ensureAuthMiddleware,
   concludTaskControler
 );
 
