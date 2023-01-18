@@ -4,10 +4,12 @@ import {
   Column,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 import Ong from "./ongs.entity";
 import Task from "./tasks.entity";
-import User_to_Project from "./users_to.projects.entity";
+import Tasks_to_Projects from "./tasks_to_projects.entity";
+import User_to_Project from "./users_to_projects.entity";
 
 @Entity("projects")
 class Project {
@@ -26,9 +28,6 @@ class Project {
   @Column()
   status: string;
 
-  @OneToMany(() => Task, (tasks) => tasks.id)
-  tasks: Task;
-
   @OneToOne(() => Ong, (ong) => ong.project)
   ong: Ong;
 
@@ -37,6 +36,12 @@ class Project {
     (user_to_project) => user_to_project.project
   )
   users: User_to_Project[];
+
+  @OneToMany(
+    () => Tasks_to_Projects,
+    (tasks_to_project) => tasks_to_project.project
+  )
+  tasks: Tasks_to_Projects[];
 }
 
 export default Project;

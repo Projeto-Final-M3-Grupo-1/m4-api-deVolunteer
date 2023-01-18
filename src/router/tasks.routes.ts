@@ -1,36 +1,41 @@
 import { Router } from "express";
-import { createTaskController, deleteTaskController, listAllTasksController, updateTaskcontroller } from "../controllers";
-import { ensureAuthMiddleware, isAdminMiddleware, validateSchemaMiddleware } from "../middlewares";
+import {
+  createTaskController,
+  deleteTaskController,
+  listAllTasksController,
+  updateTaskcontroller,
+} from "../controllers";
+import {
+  ensureAuthMiddleware,
+  ensureIsAdminMiddleware,
+  validateSchemaMiddleware,
+} from "../middlewares";
 import { createTaskSerrializer } from "../serializers/task.serializer";
 
 const tasksRoutes = Router();
 
 tasksRoutes.post(
-    "",
-    ensureAuthMiddleware,
-    isAdminMiddleware,
-    validateSchemaMiddleware(createTaskSerrializer),
-    createTaskController
+  "/projects/:id",
+  ensureAuthMiddleware,
+  ensureIsAdminMiddleware,
+  validateSchemaMiddleware(createTaskSerrializer),
+  createTaskController
 );
 
-tasksRoutes.get(
-    "",
-    ensureAuthMiddleware,
-    listAllTasksController
-);
+tasksRoutes.get("/projects/:id", ensureAuthMiddleware, listAllTasksController);
 
 tasksRoutes.patch(
-    "/:id",
-    ensureAuthMiddleware,
-    isAdminMiddleware,
-    updateTaskcontroller
+  "/:id",
+  ensureAuthMiddleware,
+  ensureIsAdminMiddleware,
+  updateTaskcontroller
 );
 
 tasksRoutes.delete(
-    "/:id", 
-    ensureAuthMiddleware, 
-    isAdminMiddleware, 
-    deleteTaskController
+  "/:id",
+  ensureAuthMiddleware,
+  ensureIsAdminMiddleware,
+  deleteTaskController
 );
 
 export default tasksRoutes;

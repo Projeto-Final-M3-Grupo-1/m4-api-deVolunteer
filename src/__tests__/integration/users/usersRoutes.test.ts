@@ -12,6 +12,7 @@ import {
   mockedDeletedUser,
   mockedProjectId,
   mockedUserToProjects,
+  mockedTask,
 } from "../../mocks";
 
 describe("/users", () => {
@@ -385,5 +386,107 @@ describe("/users", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
+  });
+
+  test("POST /users/tasks/id - should be able to apply on task", async () => {
+    const userLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+
+    const projects = await request(app)
+      .get("/projects")
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    const createdTask = await request(app)
+      .post(`/tasks/projects/${projects.body[0].id}`)
+      .set("Authorization", `Bearer ${admingLoginResponse.body.token}`)
+      .send(mockedTask);
+
+    const response = await request(app)
+      .post(`/users/tasks/${createdTask.body.tasks[0].task.id}`)
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("title");
+    expect(response.body).toHaveProperty("status");
+    expect(response.body).toHaveProperty("user");
+  });
+
+  test("POST /users/projects/:id -  should not be able to apply a task without invalid task id", async () => {
+    const userLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
+
+    const response = await request(app)
+      .post(`/users/tasks/idtest`)
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toEqual(404);
+  });
+
+  test("POST /users/tasks/:id -  should not be able to apply a task without authentication", async () => {
+    const response = await request(app).post(
+      `/users/tasks/54ee3e32-5d8f-47ef-a4e6-a6605abaf04d`
+    );
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toEqual(401);
+  });
+
+  test("POST /users/tasks/id - should be able to complete task", async () => {
+    const userLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+
+    const projects = await request(app)
+      .get("/projects")
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    const tasks = await request(app)
+      .get(`/tasks/projects/${projects.body[0].id}`)
+      .set("Authorization", `Bearer ${admingLoginResponse.body.token}`);
+
+    const response = await request(app)
+      .post(`/users/tasks/${tasks.body.tasks[0].task.id}/concluded`)
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("title");
+    expect(response.body).toHaveProperty("status");
+    expect(response.body).toHaveProperty("user");
+    expect(response.body.status).toEqual("concluded");
+    expect(response.body).toHaveProperty("user");
+    expect(response.status).toEqual(200);
+  });
+
+  test("POST /users/tasks/:id -  should not be able to conclud task without authentication", async () => {
+    const response = await request(app).post(
+      `/users/tasks/54ee3e32-5d8f-47ef-a4e6-a6605abaf04d/concluded`
+    );
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toEqual(401);
+  });
+
+  test("POST /users/projects/:id -  should not be able to apply conclud a taks without invalid task id", async () => {
+    const userLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
+
+    const response = await request(app)
+      .post(`/users/tasks/idtest/concluded`)
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("message");
+    expect(response.status).toEqual(404);
   });
 });

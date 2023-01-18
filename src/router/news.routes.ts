@@ -8,15 +8,15 @@ import {
 } from "../controllers";
 import {
   ensureAuthMiddleware,
-  isAdminMiddleware,
-  isIdValidMiddleware,
+  ensureIsAdminMiddleware,
+  ensureIsIdValidMiddleware,
 } from "../middlewares";
 const newsRouter = Router();
 
 newsRouter.post(
   "",
   ensureAuthMiddleware,
-  isAdminMiddleware,
+  ensureIsAdminMiddleware,
   createNewsController
 );
 
@@ -25,19 +25,19 @@ newsRouter.get("", ensureAuthMiddleware, listNewsController);
 newsRouter.delete(
   "/:id",
   ensureAuthMiddleware,
-  isAdminMiddleware,
-  isIdValidMiddleware,
+  ensureIsAdminMiddleware,
+  ensureIsIdValidMiddleware,
   deleteNewsController
 );
 
 newsRouter.patch(
   "/:id",
   ensureAuthMiddleware,
-  isAdminMiddleware,
-  isIdValidMiddleware,
+  ensureIsAdminMiddleware,
+  ensureIsIdValidMiddleware,
   updateNewsController
 );
 
-newsRouter.get("/:id", isIdValidMiddleware, listNewsByIdController);
+newsRouter.get("/:id", ensureIsIdValidMiddleware, listNewsByIdController);
 
 export default newsRouter;

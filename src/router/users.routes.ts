@@ -8,6 +8,8 @@ import {
   leaveProjectController,
   listUserController,
   updateUserController,
+  applyOnTaskController,
+  concludTaskControler,
 } from "../controllers";
 import {
   ensureAuthMiddleware,
@@ -15,19 +17,25 @@ import {
   ensureIsOwnerOrAdm,
   ensureUpdateData,
   ensureUserExists,
-  isAdminMiddleware,
+  ensureIsAdminMiddleware,
+  ensureIsIdValidMiddleware,
 } from "../middlewares";
 
 const userRouter = Router();
 
 userRouter.post("", createUserController);
 
-userRouter.get("", ensureAuthMiddleware, isAdminMiddleware, listUserController);
+userRouter.get(
+  "",
+  ensureAuthMiddleware,
+  ensureIsAdminMiddleware,
+  listUserController
+);
 
 userRouter.delete(
   "/:id",
   ensureAuthMiddleware,
-  isAdminMiddleware,
+  ensureIsAdminMiddleware,
   ensureUserExists,
   ensureIsActive,
   deleteUserController
@@ -64,6 +72,20 @@ userRouter.delete(
   "/projects/:id",
   ensureAuthMiddleware,
   leaveProjectController
+);
+
+userRouter.post(
+  "/tasks/:id",
+  ensureIsIdValidMiddleware,
+  ensureAuthMiddleware,
+  applyOnTaskController
+);
+
+userRouter.post(
+  "/tasks/:id/concluded",
+  ensureIsIdValidMiddleware,
+  ensureAuthMiddleware,
+  concludTaskControler
 );
 
 export default userRouter;

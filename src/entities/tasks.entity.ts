@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import Project from "./projects.entity";
 import User from "./users.entity";
 
 @Entity("tasks")
