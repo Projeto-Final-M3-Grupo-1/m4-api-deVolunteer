@@ -25,7 +25,7 @@ const createProjectService = async (
 
   project.ong = ong;
 
-  const newProject: Project = await projectRepository.create(project);
+  const newProject: Project = projectRepository.create(project);
   await projectRepository.save(newProject);
 
   return newProject;
