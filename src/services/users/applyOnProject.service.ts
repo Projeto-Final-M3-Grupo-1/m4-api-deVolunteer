@@ -8,7 +8,7 @@ import { IUserData } from "../../interfaces/users";
 const applyOnProjectService = async (
   projectId: string,
   userData: IUserData
-) => {
+): Promise<Project> => {
   const projectRepository = AppDataSource.getRepository(Project);
   const userRespository = AppDataSource.getRepository(User);
   const userToProjectRepository = AppDataSource.getRepository(User_to_Project);
@@ -31,7 +31,7 @@ const applyOnProjectService = async (
   });
   await userToProjectRepository.save(userInProject);
 
-  const projectsAndUsers: any = await projectRepository
+  const projectsAndUsers = await projectRepository
     .createQueryBuilder("projects")
     .innerJoinAndSelect("projects.users", "users_to_projects")
     .innerJoinAndSelect("projects.ong", "ong")

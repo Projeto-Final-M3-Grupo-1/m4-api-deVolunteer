@@ -1,12 +1,12 @@
 import AppDataSource from "../../data-source";
 import Project from "../../entities/projects.entity";
 
-const listAllTasksService = async (projectId: string): Promise<any> => {
+const listAllTasksService = async (projectId: string): Promise<Project> => {
   const projectRepository = AppDataSource.getRepository(Project);
 
-  const project: any = await projectRepository.findOneBy({ id: projectId });
+  const project = await projectRepository.findOneBy({ id: projectId });
 
-  const projectsAndTasks: any = await projectRepository
+  const projectsAndTasks = await projectRepository
     .createQueryBuilder("projects")
     .innerJoinAndSelect("projects.tasks", "tasks_to_projects")
     .innerJoinAndSelect("tasks_to_projects.task", "task")

@@ -1,3 +1,5 @@
+import { iTechResponse } from "../technologies";
+
 export interface IUserRequest {
   id?: string;
   name: string;
@@ -19,7 +21,7 @@ export interface IUser {
   profilePicture: string;
   isAdm: boolean;
   isActive: boolean;
-  technologies: any;
+  technologies: iTechResponse[];
   createdAt: Date;
   updatedAt: Date;
 }
