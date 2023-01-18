@@ -6,6 +6,8 @@ import updateUserController from "./users/updateUser.controller";
 import getTechnologieController from "./users/getTechnology.controller";
 import applyOnProjectController from "./users/applyOnProject.controller";
 import leaveProjectController from "./users/leaveProject.controller";
+import applyOnTaskController from "./users/applyOnTask.controller";
+import concludTaskControler from "./users/concludTask.controller";
 
 /* News */
 import createNewsController from "./news/createNews.controller";
@@ -74,4 +76,6 @@ export {
   deleteProjectController,
   updateProjectController,
   listProjectController,
+  applyOnTaskController,
+  concludTaskControler,
 };

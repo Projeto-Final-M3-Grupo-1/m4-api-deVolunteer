@@ -6,6 +6,8 @@ import updateUserService from "./users/updateUser.service";
 import getTechnologieService from "./users/getTechnology.service";
 import applyOnProjectService from "./users/applyOnProject.service";
 import leaveProjectService from "./users/leaveProject.service";
+import applyOnTaskService from "./users/applyOnTask.service";
+import concludTaskService from "./users/concludTask.service";
 
 /* News */
 import createNewsService from "./news/createNews.service";
@@ -75,4 +77,6 @@ export {
   deleteProjectService,
   listProjectService,
   updateProjectService,
+  applyOnTaskService,
+  concludTaskService,
 };

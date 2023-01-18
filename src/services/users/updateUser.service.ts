@@ -13,7 +13,7 @@ const updateUserService = async (
     id: userId,
   });
 
-  const userUpdated = await userRepository.create({
+  const userUpdated = userRepository.create({
     ...findUser,
     ...userData,
   });
