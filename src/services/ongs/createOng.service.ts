@@ -38,6 +38,7 @@ const createOngService = async (
   const ongValidated = await ongWithoutPassword.validate(ong, {
     stripUnknown: true,
   });
+
   return ongValidated;
 };
 
