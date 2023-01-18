@@ -12,6 +12,7 @@ import {
   mockedDeletedUser,
   mockedProjectId,
   mockedUserToProjects,
+  mockedTask,
 } from "../../mocks";
 
 describe("/users", () => {
@@ -385,5 +386,45 @@ describe("/users", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
+  });
+
+  test("POST /users/tasks/id - should be able to apply on task", async () => {
+    const userLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
+
+    const admingLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedAdminLogin);
+
+    const projects = await request(app)
+      .get("/projects")
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    const createdTask = await request(app)
+      .post(`/tasks/projects/${projects.body[0].id}`)
+      .set("Authorization", `Bearer ${admingLoginResponse.body.token}`)
+      .send(mockedTask);
+
+    const response = await request(app)
+      .post(`/users/tasks/${createdTask.body.tasks[0].task.id}`)
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("title");
+    expect(response.body).toHaveProperty("status");
+    expect(response.body).toHaveProperty("user");
+  });
+
+  test("POST /users/projects/:id -  should not be able to apply a task without authentication", async () => {
+    const userLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedUserLogin);
+
+    const response = await request(app)
+      .post(`/users/tasks/`)
+      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
+
+    console.log(response.status);
   });
 });

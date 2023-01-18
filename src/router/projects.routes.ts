@@ -6,7 +6,7 @@ import {
   updateProjectController,
 } from "../controllers";
 
-import { ensureAuthMiddleware, isAdminMiddleware } from "../middlewares";
+import { ensureAuthMiddleware, ensureIsAdminMiddleware } from "../middlewares";
 
 const projectRouter = Router();
 
@@ -15,7 +15,7 @@ projectRouter.post("", ensureAuthMiddleware, createProjectController);
 projectRouter.patch(
   "/:id",
   ensureAuthMiddleware,
-  isAdminMiddleware,
+  ensureIsAdminMiddleware,
   updateProjectController
 );
 
@@ -24,7 +24,7 @@ projectRouter.get("", ensureAuthMiddleware, listProjectController);
 projectRouter.delete(
   "/:id",
   ensureAuthMiddleware,
-  isAdminMiddleware,
+  ensureIsAdminMiddleware,
   deleteProjectController
 );
 
