@@ -5,43 +5,35 @@ import AppError from "../../errors/appError";
 import { IOngRequest, IOngResponse } from "../../interfaces/ongs";
 
 const createOngService = async (
-	ongData: IOngRequest
+  ongData: IOngRequest
 ): Promise<IOngResponse> => {
-	const ongRepository = AppDataSource.getRepository(Ong);
-	const userRepository = AppDataSource.getRepository(User);
+  const ongRepository = AppDataSource.getRepository(Ong);
+  const userRepository = AppDataSource.getRepository(User);
 
-	const repetedEmail = await userRepository.findOneBy({
-		email: ongData.email,
-	});
+  const repetedEmail = await userRepository.findOneBy({
+    email: ongData.email,
+  });
 
-	if (repetedEmail) {
-		throw new AppError("E-mail has already been registered", 409);
-	}
+  if (repetedEmail) {
+    throw new AppError("E-mail has already been registered", 409);
+  }
 
-	const repetedOng = await ongRepository.query(
-		`
-    SELECT
-        *
-    FROM
-        ongs
-    WHERE
-        email = $1 OR cnpj = $2
-    `,
-		[ongData.email, ongData.cnpj]
-	);
+  const repetedOng = await ongRepository.find({
+    where: [{ email: ongData.email }, { cnpj: ongData.cnpj }],
+  });
 
-	if (repetedOng[0]) {
-		throw new AppError("ONG already exists", 409);
-	}
+  if (repetedOng[0]) {
+    throw new AppError("ONG already exists", 409);
+  }
 
-	const { password, ...createdOng } = ongRepository.create(ongData);
+  const { password, ...createdOng } = ongRepository.create(ongData);
 
-	await ongRepository.save({ password, ...createdOng });
+  await ongRepository.save({ password, ...createdOng });
 
-	const { password: ignored, ...createdOngSaved } =
-		(await ongRepository.findOneBy({ email: ongData.email })) as Ong;
+  const { password: ignored, ...createdOngSaved } =
+    (await ongRepository.findOneBy({ email: ongData.email })) as Ong;
 
-	return createdOngSaved;
+  return createdOngSaved;
 };
 
 export default createOngService;

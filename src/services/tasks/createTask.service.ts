@@ -8,7 +8,7 @@ import { ITaskRequest, ITaskResponse } from "../../interfaces/tasks";
 const createTaskService = async (
   projectId: string,
   taskData: ITaskRequest
-): Promise<any> => {
+): Promise<Project> => {
   const tasksRepository = AppDataSource.getRepository(Task);
   const projectRepository = AppDataSource.getRepository(Project);
   const tasksToProjectsRepository =
@@ -41,7 +41,7 @@ const createTaskService = async (
   });
   await tasksToProjectsRepository.save(taskOnProject);
 
-  const projectsAndTasks: any = await projectRepository
+  const projectsAndTasks = await projectRepository
     .createQueryBuilder("projects")
     .innerJoinAndSelect("projects.tasks", "tasks_to_projects")
     .innerJoinAndSelect("tasks_to_projects.task", "task")

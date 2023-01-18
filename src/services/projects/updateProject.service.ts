@@ -5,14 +5,14 @@ import { IProjectUpdate, IProjectResponse } from "../../interfaces/projects";
 const updateProjectService = async (
   projecData: IProjectUpdate,
   projectId: string
-): Promise<IProjectResponse> => {
+): Promise<Project> => {
   const projectRepository = AppDataSource.getRepository(Project);
 
   const foundProject = await projectRepository.findOneBy({
     id: projectId,
   });
 
-  const projectUpdated: any = projectRepository.create({
+  const projectUpdated = projectRepository.create({
     ...foundProject,
     ...projecData,
   });
