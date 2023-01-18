@@ -27,7 +27,7 @@ import loginService from "./login/login.service";
 
 /* Tasks */
 import createTaskService from "./tasks/createTask.service";
-import listAllTasksService from "./tasks/listAllTasks.service";
+import listAllTasksService from "./tasks/listAllTasksOfOneProject.service";
 import updateTaskService from "./tasks/updateTask.service";
 import deleteTaskService from "./tasks/deleteTask.service";
 

@@ -44,15 +44,14 @@ const createTaskService = async (
   const projectsAndTasks: any = await projectRepository
     .createQueryBuilder("projects")
     .innerJoinAndSelect("projects.tasks", "tasks_to_projects")
-    .innerJoinAndSelect("projects.ong", "ong")
     .innerJoinAndSelect("tasks_to_projects.task", "task")
     .where("tasks_to_projects.project = :id_project", {
       id_project: foundProject.id,
     })
+    .where("tasks_to_projects.task = :id_task", { id_task: newTask.id })
     .getOne();
 
   return projectsAndTasks;
-
 };
 
 export default createTaskService;
