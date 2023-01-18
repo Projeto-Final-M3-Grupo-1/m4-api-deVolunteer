@@ -18,17 +18,19 @@ const createOngService = async (
     throw new AppError("E-mail has already been registered", 409);
   }
 
-  const repetedOng = await ongRepository.find({
+
+  const repetedOng = await ongRepository.findOne({
     where: [{ email: ongData.email }, { cnpj: ongData.cnpj }],
   });
 
-  if (repetedOng[0]) {
+  if (repetedOng) {
     throw new AppError("ONG already exists", 409);
   }
 
-  const { password, ...createdOng } = ongRepository.create(ongData);
+  const createdOng = ongRepository.create(ongData);
 
-  await ongRepository.save({ password, ...createdOng });
+  await ongRepository.save({ ...createdOng });
+
 
   const { password: ignored, ...createdOngSaved } =
     (await ongRepository.findOneBy({ email: ongData.email })) as Ong;
