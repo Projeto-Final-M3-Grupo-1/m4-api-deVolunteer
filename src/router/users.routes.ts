@@ -8,6 +8,8 @@ import {
   leaveProjectController,
   listUserController,
   updateUserController,
+  applyOnTaskController,
+  concludTaskControler,
 } from "../controllers";
 import {
   ensureAuthMiddleware,
@@ -64,6 +66,14 @@ userRouter.delete(
   "/projects/:id",
   ensureAuthMiddleware,
   leaveProjectController
+);
+
+userRouter.post("/tasks/:id", ensureAuthMiddleware, applyOnTaskController);
+
+userRouter.post(
+  "/tasks/:id/concluded",
+  ensureAuthMiddleware,
+  concludTaskControler
 );
 
 export default userRouter;

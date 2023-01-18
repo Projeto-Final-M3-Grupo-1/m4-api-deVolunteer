@@ -6,7 +6,7 @@ import { createTaskSerrializer } from "../serializers/task.serializer";
 const tasksRoutes = Router();
 
 tasksRoutes.post(
-    "",
+    "/projects/:id",
     ensureAuthMiddleware,
     isAdminMiddleware,
     validateSchemaMiddleware(createTaskSerrializer),
