@@ -458,7 +458,6 @@ describe("/users", () => {
     const response = await request(app)
       .post(`/users/tasks/${tasks.body.tasks[0].task.id}/concluded`)
       .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
-    console.log(response.body);
 
     expect(response.body).toHaveProperty("id");
     expect(response.body).toHaveProperty("title");
