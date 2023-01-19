@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 import Technology from "../entities/technologies.entity";
 
-export class createTech1673449497162 implements MigrationInterface {
+export class insertTechs1674075351225 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.manager.insert<Technology>(Technology, {
       name: "React",

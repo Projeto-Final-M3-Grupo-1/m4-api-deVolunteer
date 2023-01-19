@@ -25,3 +25,15 @@ export interface IOngUpdate {
   profilePicture?: string;
   linkedin?: string;
 }
+
+export interface IOngResponseWithoutPassword {
+  companyName: string;
+  email: string;
+  cnpj: string;
+  phone: number;
+  github?: string;
+  ownerName?: string;
+  profilePicture?: string;
+  linkedin?: string;
+  id: string;
+}

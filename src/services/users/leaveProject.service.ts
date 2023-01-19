@@ -10,7 +10,7 @@ const leaveProjectService = async (projectId: string, userData: IUserData) => {
   const userRespository = AppDataSource.getRepository(User);
   const userToProjectRepository = AppDataSource.getRepository(User_to_Project);
 
-  const project: any = projectRepository.findOneBy({
+  const project = await projectRepository.findOneBy({
     id: projectId,
   });
 
@@ -18,12 +18,12 @@ const leaveProjectService = async (projectId: string, userData: IUserData) => {
     throw new AppError("Project id invalid!", 404);
   }
 
-  const user: any = userRespository.findOneBy({
+  const user = await userRespository.findOneBy({
     id: userData.id,
   });
 
   const userInProject = await userToProjectRepository.findOne({
-    where: { user: user, project: project },
+    where: { user: { id: user.id }, project: { id: project.id } },
     relations: { user: true, project: true },
   });
 

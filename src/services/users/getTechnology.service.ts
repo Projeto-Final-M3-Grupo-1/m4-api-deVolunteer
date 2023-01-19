@@ -35,7 +35,7 @@ const getTechnologieService = async (
     });
   await userToTechnologyRepository.save(addTechnology);
 
-  const userAndTechnologies: any = await userRepository
+  const userAndTechnologies = await userRepository
     .createQueryBuilder("users")
     .innerJoinAndSelect("users.technologies", "users_to_technologies")
     .innerJoinAndSelect("users_to_technologies.technologies", "technologies")
