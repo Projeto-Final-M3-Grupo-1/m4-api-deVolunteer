@@ -1,6 +1,5 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 import Technology from "../entities/technologies.entity";
-
 export class insertTechs1674075351225 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.manager.insert<Technology>(Technology, {
@@ -61,6 +60,5 @@ export class insertTechs1674075351225 implements MigrationInterface {
       name: "TypeORM",
     });
   }
-
   public async down(queryRunner: QueryRunner): Promise<void> {}
 }

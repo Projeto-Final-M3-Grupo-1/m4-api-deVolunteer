@@ -2,18 +2,18 @@
 
 # Documentação da API
 
--   Link da documentação da API: https://raphaeldamasceno1852.github.io/DeVolunteer-Doc/
+- Link da documentação da API: https://raphaeldamasceno1852.github.io/DeVolunteer-Doc/
 
 ## Tabela de Conteúdos
 
--   [Visão Geral](#2-visão-geral)
--   [Diagrama ER](#2-diagrama-er)
--   [Início Rápido](#3-início-rápido)
-    -   [Instalando Dependências](#31-instalando-dependências)
-    -   [Variáveis de Ambiente](#32-variáveis-de-ambiente)
-    -   [Migrations](#33-migrations)
--   [Autenticação](#4-autenticação)
--   [Endpoints](#5-endpoints)
+- [Visão Geral](#2-visão-geral)
+- [Diagrama ER](#2-diagrama-er)
+- [Início Rápido](#3-início-rápido)
+  - [Instalando Dependências](#31-instalando-dependências)
+  - [Variáveis de Ambiente](#32-variáveis-de-ambiente)
+  - [Migrations](#33-migrations)
+- [Autenticação](#4-autenticação)
+- [Endpoints](#5-endpoints)
 
 ---
 
@@ -21,12 +21,12 @@
 
 Visão geral do projeto, um pouco das tecnologias usadas.
 
--   [NodeJS](https://nodejs.org/en/)
--   [Express](https://expressjs.com/pt-br/)
--   [TypeScript](https://www.typescriptlang.org/)
--   [PostgreSQL](https://www.postgresql.org/)
--   [TypeORM](https://typeorm.io/)
--   [Yup](https://www.npmjs.com/package/yup)
+- [NodeJS](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [TypeORM](https://typeorm.io/)
+- [Yup](https://www.npmjs.com/package/yup)
 
 A URL base da aplicação:
 https://devolunteer.onrender.com
@@ -81,8 +81,8 @@ yarn typeorm migration:run -d src/data-source.ts
 
 ### Índice
 
--   [Login](#1-login)
-    -   [POST - /login](#11-autenticação-de-usuário)
+- [Login](#1-login)
+  - [POST - /login](#11-autenticação-de-usuário)
 
 ---
 
@@ -92,40 +92,43 @@ yarn typeorm migration:run -d src/data-source.ts
 
 ### Índice
 
--   [Users](#2-users)
-    -   [POST - /users](#21-criação-de-usuário)
-    -   [GET - /users](#22-listando-usuários)
-    -   [PATCH - /users/:user_id](#23-atualizar-usuário-por-id)
-    -   [DELETE - /users/:user_id](#24-deletar-usuário-por-id)
--   [Ong](#3-ong)
-    -   [POST - /ong](#31-criação-de-ong)
-    -   [GET - /ong](#32-listando-ongs)
-    -   [PATCH - /ong/:user_id](#33-atualizar-ong-por-id)
-    -   [DELETE - /ong/:user_id](#34-deletar-ong-por-id)
--   [News](#4-news)
-    -   [POST - /news](#41-criação-de-notícias)
-    -   [GET - /news](#42-listando-notícias)
-    -   [GET - /news/:news_id](#43-listando-notícias-por-id)
-    -   [PATCH - /news/:news_id](#44-atualizar-notícias-por-id)
-    -   [DELETE - /news/:news_id](#45-deletar-notícia-por-id)
--   [Projects](#5-projects)
-    -   [POST - /news](#51-criação-de-projetos)
-    -   [GET - /news](#52-listando-projetos)
-    -   [PATCH - /news/:news_id](#53-atualizar-projetos-por-id)
-    -   [DELETE - /news/:news_id](#54-deletar-projeto-por-id)
--   [Tasks](#6-tasks)
-    -   [POST - /tasks/projects/:projects_id](#61-criação-de-tarefas)
-    -   [GET - /tasks/projects/:projects_id](#62-listando-tarefas)
-    -   [PATCH - /tasks/:tasks_id](#63-atualizar-tarefas-por-id)
-    -   [DELETE - /tasks/:task_id](#64-deletar-tarefas-por-id)
--   [Technologies](#7-technologies)
-    -   [POST - /users/technologies/:technology_id](#71-adicionar-tecnologias-ao-usuário)
-    -   [GET - /projects](#72-listando-todas-tecnologias-existentes)
-    -   [DELETE - /users/technologies/:technology_id](#73-deletar-tecnologias-por-id)
--   [User-tasks](#8-user-tasks)
-    -   [POST - /users/tasks/:task_id](#81-alterar-o-status-para-desenvolvimento)
-    -   [POST - /users/tasks/:task_id](#82-alterar-o-status-para-concluido)
-    -   [DELETE - /tasks/:task_id](#73-deletar-tecnologias-por-id)
+- [Users](#2-users)
+  - [POST - /users](#21-criação-de-usuário)
+  - [GET - /users](#22-listando-usuários)
+  - [PATCH - /users/:user_id](#23-atualizar-usuário-por-id)
+  - [DELETE - /users/:user_id](#24-deletar-usuário-por-id)
+- [Ong](#3-ong)
+  - [POST - /ong](#31-criação-de-ong)
+  - [GET - /ong](#32-listando-ongs)
+  - [PATCH - /ong/:user_id](#33-atualizar-ong-por-id)
+  - [DELETE - /ong/:user_id](#34-deletar-ong-por-id)
+- [News](#4-news)
+  - [POST - /news](#41-criação-de-notícias)
+  - [GET - /news](#42-listando-notícias)
+  - [GET - /news/:news_id](#43-listando-notícias-por-id)
+  - [PATCH - /news/:news_id](#44-atualizar-notícias-por-id)
+  - [DELETE - /news/:news_id](#45-deletar-notícia-por-id)
+- [Projects](#5-projects)
+  - [POST - /news](#51-criação-de-projetos)
+  - [GET - /news](#52-listando-projetos)
+  - [PATCH - /news/:news_id](#53-atualizar-projetos-por-id)
+  - [DELETE - /news/:news_id](#54-deletar-projeto-por-id)
+- [Tasks](#6-tasks)
+  - [POST - /tasks/projects/:projects_id](#61-criação-de-tarefas)
+  - [GET - /tasks/projects/:projects_id](#62-listando-tarefas)
+  - [PATCH - /tasks/:tasks_id](#63-atualizar-tarefas-por-id)
+  - [DELETE - /tasks/:task_id](#64-deletar-tarefas-por-id)
+- [Technologies](#7-technologies)
+  - [POST - /users/technologies/:technology_id](#71-adicionar-tecnologias-ao-usuário)
+  - [GET - /projects](#72-listando-todas-tecnologias-existentes)
+  - [DELETE - /users/technologies/:technology_id](#73-deletar-tecnologias-por-id)
+- [User-tasks](#8-user-tasks)
+  - [POST - /users/tasks/:task_id](#81-alterar-o-status-para-desenvolvimento)
+  - [POST - /users/tasks/:task_id](#82-alterar-o-status-para-concluido)
+  - [DELETE - /tasks/:task_id](#73-deletar-tecnologias-por-id)
+- [User-Projects](#9-user-projects)
+  - [POST - /users/projects/:projects_id](#91-entrar-no-projeto-por-id)
+  - [DELETE - /users/projects/:prjects_id](#92-sair-do-projeto-por-id)
 
 ---
 
@@ -169,8 +172,8 @@ Content-type: application/json
 
 ```json
 {
-	"email": "rafaelquadros@mail.com",
-	"password": "123456"
+  "email": "rafaelquadros@mail.com",
+  "password": "123456"
 }
 ```
 
@@ -178,8 +181,8 @@ Content-type: application/json
 
 ```javascript
 loginSerializer = yup.object().shape({
-	email: yup.string().email().required(),
-	password: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().required(),
 });
 ```
 
@@ -193,7 +196,7 @@ OBS.: Chaves não presentes no schema serão removidas.
 
 ```json
 {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbSI6dHJ1ZSwiaXNBY3RpdmUiOnRydWUsInR5cGVVc2VyIjoiRGV2IiwiaWF0IjoxNjc0MDQ5NTI1LCJleHAiOjE2NzQxMzU5MjUsInN1YiI6ImQyOWY2Mzk2LWQ1MDMtNDg3Ny04NWRhLWY1NTNhMWY2ODE3ZSJ9.wWeXDDMXcJ3mKMC9IEFmljgTC3sPt95U3UR_-i6dpsQ"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbSI6dHJ1ZSwiaXNBY3RpdmUiOnRydWUsInR5cGVVc2VyIjoiRGV2IiwiaWF0IjoxNjc0MDQ5NTI1LCJleHAiOjE2NzQxMzU5MjUsInN1YiI6ImQyOWY2Mzk2LWQ1MDMtNDg3Ny04NWRhLWY1NTNhMWY2ODE3ZSJ9.wWeXDDMXcJ3mKMC9IEFmljgTC3sPt95U3UR_-i6dpsQ"
 }
 ```
 
@@ -255,13 +258,13 @@ Content-type: application/json
 
 ```json
 {
-	"name": "Rafael Quadros",
-	"email": "rafaelquadros@mail.com",
-	"isAdm": true,
-	"password": "123456",
-	"github": "www.github.com",
-	"linkedin": "www.linkedin.com",
-	"profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg"
+  "name": "Rafael Quadros",
+  "email": "rafaelquadros@mail.com",
+  "isAdm": true,
+  "password": "123456",
+  "github": "www.github.com",
+  "linkedin": "www.linkedin.com",
+  "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg"
 }
 ```
 
@@ -269,14 +272,14 @@ Content-type: application/json
 
 ```javascript
 CreateUserSerializerRequest = yup.object().shape({
-	name: yup.string().required(),
-	email: yup.string().required(),
-	password: yup.string().required(),
-	github: yup.string().required(),
-	linkedin: yup.string().required(),
-	profilePicture: yup.string().required(),
-	isAdm: yup.boolean().notRequired(),
-	location: yup.string().required(),
+  name: yup.string().required(),
+  email: yup.string().required(),
+  password: yup.string().required(),
+  github: yup.string().required(),
+  linkedin: yup.string().required(),
+  profilePicture: yup.string().required(),
+  isAdm: yup.boolean().notRequired(),
+  location: yup.string().required(),
 });
 ```
 
@@ -290,17 +293,17 @@ OBS.: Chaves não presentes no schema serão removidas.
 
 ```json
 {
-	"location": "Brazil/BR - Minas Gerais/MG - Vespasiano",
-	"updatedAt": "2023-01-17T19:41:17.877Z",
-	"createdAt": "2023-01-17T19:41:17.877Z",
-	"isActive": true,
-	"isAdm": true,
-	"profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
-	"linkedin": "www.linkedin.com",
-	"github": "www.github.com",
-	"email": "rafaelquadros@mail.com",
-	"name": "Rafael Quadros",
-	"id": "8f321719-c27c-4b6d-be59-54091dbe5270"
+  "location": "Brazil/BR - Minas Gerais/MG - Vespasiano",
+  "updatedAt": "2023-01-17T19:41:17.877Z",
+  "createdAt": "2023-01-17T19:41:17.877Z",
+  "isActive": true,
+  "isAdm": true,
+  "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
+  "linkedin": "www.linkedin.com",
+  "github": "www.github.com",
+  "email": "rafaelquadros@mail.com",
+  "name": "Rafael Quadros",
+  "id": "8f321719-c27c-4b6d-be59-54091dbe5270"
 }
 ```
 
@@ -339,19 +342,19 @@ Vazio
 
 ```json
 [
-	{
-		"location": "Brazil/BR - Minas Gerais/MG - Vespasiano",
-		"updatedAt": "2023-01-17T19:41:17.877Z",
-		"createdAt": "2023-01-17T19:41:17.877Z",
-		"isActive": true,
-		"isAdm": true,
-		"profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
-		"linkedin": "www.linkedin.com",
-		"github": "www.github.com",
-		"email": "rafaelquadros@mail.com",
-		"name": "Rafael Quadros",
-		"id": "8f321719-c27c-4b6d-be59-54091dbe5270"
-	}
+  {
+    "location": "Brazil/BR - Minas Gerais/MG - Vespasiano",
+    "updatedAt": "2023-01-17T19:41:17.877Z",
+    "createdAt": "2023-01-17T19:41:17.877Z",
+    "isActive": true,
+    "isAdm": true,
+    "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
+    "linkedin": "www.linkedin.com",
+    "github": "www.github.com",
+    "email": "rafaelquadros@mail.com",
+    "name": "Rafael Quadros",
+    "id": "8f321719-c27c-4b6d-be59-54091dbe5270"
+  }
 ]
 ```
 
@@ -391,13 +394,13 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"name": "Rafael Quadros editado",
-	"email": "rafaelquadros@mail.com",
-	"isAdm": true,
-	"password": "123456",
-	"github": "www.github.com",
-	"linkedin": "www.linkedin.com",
-	"profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg"
+  "name": "Rafael Quadros editado",
+  "email": "rafaelquadros@mail.com",
+  "isAdm": true,
+  "password": "123456",
+  "github": "www.github.com",
+  "linkedin": "www.linkedin.com",
+  "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg"
 }
 ```
 
@@ -409,17 +412,17 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"location": "United States/US - Oregon/OR - Portland",
-	"updatedAt": "2023-01-16T14:56:59.810Z",
-	"createdAt": "2023-01-16T14:43:38.571Z",
-	"isActive": true,
-	"isAdm": true,
-	"profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
-	"linkedin": "www.linkedin.com",
-	"github": "www.github.com",
-	"email": "userAdminUpdated@mail.com",
-	"name": "Rafael Quadros editado",
-	"id": "82b5350a-4da9-46e0-b85b-09ab20b22c09"
+  "location": "United States/US - Oregon/OR - Portland",
+  "updatedAt": "2023-01-16T14:56:59.810Z",
+  "createdAt": "2023-01-16T14:43:38.571Z",
+  "isActive": true,
+  "isAdm": true,
+  "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
+  "linkedin": "www.linkedin.com",
+  "github": "www.github.com",
+  "email": "userAdminUpdated@mail.com",
+  "name": "Rafael Quadros editado",
+  "id": "82b5350a-4da9-46e0-b85b-09ab20b22c09"
 }
 ```
 
@@ -528,11 +531,11 @@ Content-type: application/json
 
 ```json
 {
-	"companyName": "Another1",
-	"email": "another1@email.com",
-	"password": "1234",
-	"cnpj": "12345678901270",
-	"phone": 219765478
+  "companyName": "Another1",
+  "email": "another1@email.com",
+  "password": "1234",
+  "cnpj": "12345678901270",
+  "phone": 219765478
 }
 ```
 
@@ -540,18 +543,18 @@ Content-type: application/json
 
 ```javascript
 ongSerializer = yup.object().shape({
-	companyName: yup.string().required(),
-	email: yup.string().email().required(),
-	password: yup
-		.string()
-		.required()
-		.transform((value, originalValue) => hashSync(originalValue, 10)),
-	cnpj: yup.string().min(14).max(14).required(),
-	phone: yup.number().required(),
-	github: yup.string(),
-	ownerName: yup.string(),
-	profilePicture: yup.string().url(),
-	linkedin: yup.string().url(),
+  companyName: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup
+    .string()
+    .required()
+    .transform((value, originalValue) => hashSync(originalValue, 10)),
+  cnpj: yup.string().min(14).max(14).required(),
+  phone: yup.number().required(),
+  github: yup.string(),
+  ownerName: yup.string(),
+  profilePicture: yup.string().url(),
+  linkedin: yup.string().url(),
 });
 ```
 
@@ -565,18 +568,18 @@ OBS.: Chaves não presentes no schema serão removidas.
 
 ```json
 {
-	"id": "45c9b6de-3538-4ebd-84e5-960dc9986df9",
-	"companyName": "Another1",
-	"email": "another1@email.com",
-	"cnpj": "12345678901270",
-	"phone": 219765478,
-	"ownerName": null,
-	"profilePicture": null,
-	"github": null,
-	"linkedin": null,
-	"isActive": true,
-	"createdAt": "2023-01-17T19:59:54.967Z",
-	"updatedAt": "2023-01-17T19:59:54.967Z"
+  "id": "45c9b6de-3538-4ebd-84e5-960dc9986df9",
+  "companyName": "Another1",
+  "email": "another1@email.com",
+  "cnpj": "12345678901270",
+  "phone": 219765478,
+  "ownerName": null,
+  "profilePicture": null,
+  "github": null,
+  "linkedin": null,
+  "isActive": true,
+  "createdAt": "2023-01-17T19:59:54.967Z",
+  "updatedAt": "2023-01-17T19:59:54.967Z"
 }
 ```
 
@@ -617,19 +620,19 @@ Vazio
 
 ```json
 [
-	{
-		"id": "d56754d9-db3f-4420-8f7e-dd40323060d6",
-		"companyName": "Another",
-		"email": "anotherf@email.com",
-		"cnpj": "12345678901279",
-		"phone": 219765478,
-		"ownerName": null,
-		"profilePicture": null,
-		"github": null,
-		"linkedin": null,
-		"createdAt": "2023-01-17T19:41:53.437Z",
-		"updatedAt": "2023-01-17T19:41:53.437Z"
-	}
+  {
+    "id": "d56754d9-db3f-4420-8f7e-dd40323060d6",
+    "companyName": "Another",
+    "email": "anotherf@email.com",
+    "cnpj": "12345678901279",
+    "phone": 219765478,
+    "ownerName": null,
+    "profilePicture": null,
+    "github": null,
+    "linkedin": null,
+    "createdAt": "2023-01-17T19:41:53.437Z",
+    "updatedAt": "2023-01-17T19:41:53.437Z"
+  }
 ]
 ```
 
@@ -668,7 +671,7 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"companyName": "BCDE"
+  "companyName": "BCDE"
 }
 ```
 
@@ -680,18 +683,18 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"id": "d56754d9-db3f-4420-8f7e-dd40323060d6",
-	"companyName": "BCDE",
-	"email": "anotherf@email.com",
-	"cnpj": "12345678901279",
-	"phone": 219765478,
-	"ownerName": null,
-	"profilePicture": null,
-	"github": null,
-	"linkedin": null,
-	"isActive": true,
-	"createdAt": "2023-01-17T19:41:53.437Z",
-	"updatedAt": "2023-01-17T19:58:45.627Z"
+  "id": "d56754d9-db3f-4420-8f7e-dd40323060d6",
+  "companyName": "BCDE",
+  "email": "anotherf@email.com",
+  "cnpj": "12345678901279",
+  "phone": 219765478,
+  "ownerName": null,
+  "profilePicture": null,
+  "github": null,
+  "linkedin": null,
+  "isActive": true,
+  "createdAt": "2023-01-17T19:41:53.437Z",
+  "updatedAt": "2023-01-17T19:58:45.627Z"
 }
 ```
 
@@ -800,10 +803,10 @@ Content-type: application/json
 
 ```json
 {
-	"title": "Olá mundo2!",
-	"description": "ola",
-	"site": "https://www.google.com.br",
-	"img": "https://thiscatdoesnotexist.com/"
+  "title": "Olá mundo2!",
+  "description": "ola",
+  "site": "https://www.google.com.br",
+  "img": "https://thiscatdoesnotexist.com/"
 }
 ```
 
@@ -815,28 +818,28 @@ Content-type: application/json
 
 ```json
 {
-	"title": "Olá mundo!",
-	"description": "oieeeeee",
-	"site": "https://www.google.com.br",
-	"img": "https://thiscatdoesnotexist.com/",
-	"user": {
-		"id": "8f321719-c27c-4b6d-be59-54091dbe5270",
-		"name": "Rafael Quadros",
-		"email": "rafaelquadros@mail.com",
-		"password": "$2a$10$f.zETVOFgVLLImgZvIqckOSdJnwZbtUcjKaBmUoEtu0YX7sTPWm.C",
-		"github": "www.github.com",
-		"linkedin": "www.linkedin.com",
-		"profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
-		"location": "Brazil/BR - Minas Gerais/MG - Vespasiano",
-		"isAdm": true,
-		"isActive": true,
-		"createdAt": "2023-01-17T19:41:17.877Z",
-		"updatedAt": "2023-01-17T19:41:17.877Z"
-	},
-	"deletedAt": null,
-	"id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
-	"createdAt": "2023-01-17T20:00:58.591Z",
-	"updatedAt": "2023-01-17T20:00:58.591Z"
+  "title": "Olá mundo!",
+  "description": "oieeeeee",
+  "site": "https://www.google.com.br",
+  "img": "https://thiscatdoesnotexist.com/",
+  "user": {
+    "id": "8f321719-c27c-4b6d-be59-54091dbe5270",
+    "name": "Rafael Quadros",
+    "email": "rafaelquadros@mail.com",
+    "password": "$2a$10$f.zETVOFgVLLImgZvIqckOSdJnwZbtUcjKaBmUoEtu0YX7sTPWm.C",
+    "github": "www.github.com",
+    "linkedin": "www.linkedin.com",
+    "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
+    "location": "Brazil/BR - Minas Gerais/MG - Vespasiano",
+    "isAdm": true,
+    "isActive": true,
+    "createdAt": "2023-01-17T19:41:17.877Z",
+    "updatedAt": "2023-01-17T19:41:17.877Z"
+  },
+  "deletedAt": null,
+  "id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
+  "createdAt": "2023-01-17T20:00:58.591Z",
+  "updatedAt": "2023-01-17T20:00:58.591Z"
 }
 ```
 
@@ -878,16 +881,16 @@ Vazio
 
 ```json
 [
-	{
-		"id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
-		"title": "Olá mundo!",
-		"description": "oieeeeee",
-		"site": "https://www.google.com.br",
-		"img": "https://thiscatdoesnotexist.com/",
-		"createdAt": "2023-01-17T20:00:58.591Z",
-		"updatedAt": "2023-01-17T20:00:58.591Z",
-		"deletedAt": null
-	}
+  {
+    "id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
+    "title": "Olá mundo!",
+    "description": "oieeeeee",
+    "site": "https://www.google.com.br",
+    "img": "https://thiscatdoesnotexist.com/",
+    "createdAt": "2023-01-17T20:00:58.591Z",
+    "updatedAt": "2023-01-17T20:00:58.591Z",
+    "deletedAt": null
+  }
 ]
 ```
 
@@ -936,14 +939,14 @@ vazio.
 
 ```json
 {
-	"id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
-	"title": "Olá mundo!",
-	"description": "oieeeeee",
-	"site": "https://www.google.com.br",
-	"img": "https://thiscatdoesnotexist.com/",
-	"createdAt": "2023-01-17T20:00:58.591Z",
-	"updatedAt": "2023-01-17T20:00:58.591Z",
-	"deletedAt": null
+  "id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
+  "title": "Olá mundo!",
+  "description": "oieeeeee",
+  "site": "https://www.google.com.br",
+  "img": "https://thiscatdoesnotexist.com/",
+  "createdAt": "2023-01-17T20:00:58.591Z",
+  "updatedAt": "2023-01-17T20:00:58.591Z",
+  "deletedAt": null
 }
 ```
 
@@ -982,7 +985,7 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"description": "Noticia atualizada com sucesso"
+  "description": "Noticia atualizada com sucesso"
 }
 ```
 
@@ -994,14 +997,14 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
-	"title": "Olá mundo!",
-	"description": "Noticia atualizada com sucesso",
-	"site": "https://www.google.com.br",
-	"img": "https://thiscatdoesnotexist.com/",
-	"createdAt": "2023-01-17T20:00:58.591Z",
-	"updatedAt": "2023-01-17T20:12:37.948Z",
-	"deletedAt": null
+  "id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
+  "title": "Olá mundo!",
+  "description": "Noticia atualizada com sucesso",
+  "site": "https://www.google.com.br",
+  "img": "https://thiscatdoesnotexist.com/",
+  "createdAt": "2023-01-17T20:00:58.591Z",
+  "updatedAt": "2023-01-17T20:12:37.948Z",
+  "deletedAt": null
 }
 ```
 
@@ -1117,10 +1120,10 @@ projectsRequestSerializer: SchemaOf<IProjectRequest> = yup
 
 ```json
 {
-	"title": "Teste 9",
-	"description": "alo",
-	"projectsPicture": "www.google.com",
-	"status": "pendings"
+  "title": "Teste 9",
+  "description": "alo",
+  "projectsPicture": "www.google.com",
+  "status": "pendings"
 }
 ```
 
@@ -1134,26 +1137,26 @@ OBS.: Chaves não presentes no schema serão removidas.
 
 ```json
 {
-	"title": "Teste ",
-	"description": "alo",
-	"projectsPicture": "www.google.com",
-	"status": "pendings",
-	"ong": {
-		"id": "5f43af6e-9230-41ef-a246-eb91befdecba",
-		"companyName": "Another1",
-		"email": "another1@email.com",
-		"password": "$2a$10$bHuaJI/wcI0chVz4yWia/O6975TFW2GZqEwgU0hdkIVfiX3HRiU6K",
-		"cnpj": "12345678901270",
-		"phone": 219765478,
-		"ownerName": null,
-		"profilePicture": null,
-		"github": null,
-		"linkedin": null,
-		"isActive": true,
-		"createdAt": "2023-01-18T17:45:56.385Z",
-		"updatedAt": "2023-01-18T17:45:56.385Z"
-	},
-	"id": "7d8cb817-b189-466a-8d57-b14be17e9133"
+  "title": "Teste ",
+  "description": "alo",
+  "projectsPicture": "www.google.com",
+  "status": "pendings",
+  "ong": {
+    "id": "5f43af6e-9230-41ef-a246-eb91befdecba",
+    "companyName": "Another1",
+    "email": "another1@email.com",
+    "password": "$2a$10$bHuaJI/wcI0chVz4yWia/O6975TFW2GZqEwgU0hdkIVfiX3HRiU6K",
+    "cnpj": "12345678901270",
+    "phone": 219765478,
+    "ownerName": null,
+    "profilePicture": null,
+    "github": null,
+    "linkedin": null,
+    "isActive": true,
+    "createdAt": "2023-01-18T17:45:56.385Z",
+    "updatedAt": "2023-01-18T17:45:56.385Z"
+  },
+  "id": "7d8cb817-b189-466a-8d57-b14be17e9133"
 }
 ```
 
@@ -1195,13 +1198,13 @@ Vazio
 
 ```json
 [
-	{
-		"id": "1f45b37f-7ff4-4c4f-bd94-00181faf173d",
-		"title": "Teste1",
-		"description": "alo",
-		"projectsPicture": "www.google.com",
-		"status": "pendings"
-	}
+  {
+    "id": "1f45b37f-7ff4-4c4f-bd94-00181faf173d",
+    "title": "Teste1",
+    "description": "alo",
+    "projectsPicture": "www.google.com",
+    "status": "pendings"
+  }
 ]
 ```
 
@@ -1240,7 +1243,7 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"description": "Projeto atualizado com sucesso"
+  "description": "Projeto atualizado com sucesso"
 }
 ```
 
@@ -1252,14 +1255,14 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
-	"title": "Olá mundo!",
-	"description": "Projeto atualizado com sucesso",
-	"site": "https://www.google.com.br",
-	"img": "https://thiscatdoesnotexist.com/",
-	"createdAt": "2023-01-17T20:00:58.591Z",
-	"updatedAt": "2023-01-17T20:12:37.948Z",
-	"deletedAt": null
+  "id": "d3ede8d8-e7d8-41e4-91fa-8e52e43e3d65",
+  "title": "Olá mundo!",
+  "description": "Projeto atualizado com sucesso",
+  "site": "https://www.google.com.br",
+  "img": "https://thiscatdoesnotexist.com/",
+  "createdAt": "2023-01-17T20:00:58.591Z",
+  "updatedAt": "2023-01-17T20:12:37.948Z",
+  "deletedAt": null
 }
 ```
 
@@ -1357,7 +1360,7 @@ Content-type: application/json
 
 ```json
 {
-	"title": "Criar tarefa"
+  "title": "Criar tarefa"
 }
 ```
 
@@ -1377,22 +1380,22 @@ OBS.: Chaves não presentes no schema serão removidas.
 
 ```json
 {
-	"id": "970f65a9-e234-42fd-9d55-caab59973bea",
-	"title": "Projeto atualizado com sucesso",
-	"description": "alo",
-	"projectsPicture": "www.google.com",
-	"status": "pendings",
-	"tasks": [
-		{
-			"id": "bc182c1d-a451-4c39-ab01-50989f5b3791",
-			"created_in": "2023-01-18T18:45:26.128Z",
-			"task": {
-				"id": "e26def3f-29e6-4d5b-b3ac-b273c6b65ffc",
-				"title": "Criar tarefa",
-				"status": "pendings"
-			}
-		}
-	]
+  "id": "970f65a9-e234-42fd-9d55-caab59973bea",
+  "title": "Projeto atualizado com sucesso",
+  "description": "alo",
+  "projectsPicture": "www.google.com",
+  "status": "pendings",
+  "tasks": [
+    {
+      "id": "bc182c1d-a451-4c39-ab01-50989f5b3791",
+      "created_in": "2023-01-18T18:45:26.128Z",
+      "task": {
+        "id": "e26def3f-29e6-4d5b-b3ac-b273c6b65ffc",
+        "title": "Criar tarefa",
+        "status": "pendings"
+      }
+    }
+  ]
 }
 ```
 
@@ -1441,22 +1444,22 @@ Vazio
 
 ```json
 {
-	"id": "970f65a9-e234-42fd-9d55-caab59973bea",
-	"title": "Projeto atualizado com sucesso",
-	"description": "alo",
-	"projectsPicture": "www.google.com",
-	"status": "pendings",
-	"tasks": [
-		{
-			"id": "bc182c1d-a451-4c39-ab01-50989f5b3791",
-			"created_in": "2023-01-18T18:45:26.128Z",
-			"task": {
-				"id": "e26def3f-29e6-4d5b-b3ac-b273c6b65ffc",
-				"title": "Criar tarefa",
-				"status": "pendings"
-			}
-		}
-	]
+  "id": "970f65a9-e234-42fd-9d55-caab59973bea",
+  "title": "Projeto atualizado com sucesso",
+  "description": "alo",
+  "projectsPicture": "www.google.com",
+  "status": "pendings",
+  "tasks": [
+    {
+      "id": "bc182c1d-a451-4c39-ab01-50989f5b3791",
+      "created_in": "2023-01-18T18:45:26.128Z",
+      "task": {
+        "id": "e26def3f-29e6-4d5b-b3ac-b273c6b65ffc",
+        "title": "Criar tarefa",
+        "status": "pendings"
+      }
+    }
+  ]
 }
 ```
 
@@ -1495,7 +1498,7 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"description": "criar tarefa editado"
+  "description": "criar tarefa editado"
 }
 ```
 
@@ -1507,9 +1510,9 @@ Necessita de apenas um campo para fazer a atualização parcial.
 
 ```json
 {
-	"id": "e26def3f-29e6-4d5b-b3ac-b273c6b65ffc",
-	"title": "criar tarefa editado",
-	"status": "pendings"
+  "id": "e26def3f-29e6-4d5b-b3ac-b273c6b65ffc",
+  "title": "criar tarefa editado",
+  "status": "pendings"
 }
 ```
 
@@ -1714,6 +1717,8 @@ vazio.
 
 ---
 
+---
+
 ## 8. **User tasks**
 
 [ Voltar para os Endpoints ](#5-endpoints)
@@ -1835,6 +1840,166 @@ Vazio
 | 401 Unauthorized | Invalid signature. |
 
 [ Voltar para os Endpoints ](#5-endpoints)
-[ Voltar para o topo ](#tabela-de-conteúdos)
 
 ---
+
+## 9. **User projects**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+O objeto projects é definido como:
+
+O objeto Project é definido como:
+
+| Campo           | Tipo           | Descrição                            |
+| --------------- | -------------- | ------------------------------------ |
+| id              | string         | Identificador único do projeto       |
+| title           | string         | Título do projeto.                   |
+| description     | string         | A descrição do projeto.              |
+| projectsPicture | string or null | Foto do projeto.                     |
+| status          | boolean        | Status do projeto.                   |
+| ong             | string         | Nome da ong que solicitou o projeto. |
+
+---
+
+### Endpoints
+
+| Método | Rota                         | Descrição                               |
+| ------ | ---------------------------- | --------------------------------------- |
+| POST   | /users/projects/:projects_id | permite o usuário ingressar no projeto. |
+| DELETE | /users/projects/:projects_id | permite o usuário sair do projeto.      |
+
+---
+
+### 9.1. **Entrar no projeto por id**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/users/projects/:projects_id`
+
+### Exemplo de Request:
+
+```
+POST /users/projects/{{ _.projectId }}
+Host: https://devolunteer.onrender.com
+Authorization: Bearer token
+Content-type: application/json
+```
+
+### Corpo da Requisição:
+
+```json
+vazio
+```
+
+OBS.: Chaves não presentes no schema serão removidas.
+
+### Parâmetros da Requisição:
+
+| Parâmetro  | Tipo   | Descrição                                                           |
+| ---------- | ------ | ------------------------------------------------------------------- |
+| project_id | string | Identificador único do projeto cujo status será alterado (projects) |
+
+### Exemplo de Response:
+
+```
+200 OK
+```
+
+```json
+{
+  "id": "4feec19e-b04a-4904-aa25-64f01156e09a",
+  "title": "Teste 9",
+  "description": "alo",
+  "projectsPicture": "www.google.com",
+  "status": "pendings",
+  "users": [
+    {
+      "id": "f4621c5d-b8c5-4828-975d-687d9095d28b",
+      "applied_in_project": "2023-01-19T00:40:24.826Z",
+      "user": {
+        "id": "9ba5bde4-51ce-4d72-b515-5cb5672d5f47",
+        "name": "Bruno Bittencourt",
+        "email": "bbittencourt@mail.com",
+        "password": "$2a$10$Ch0qVHA.ZyVBEKy448x9KO.hve6gCgUx5Q.PTPaZSyGTFGQO6wNbO",
+        "github": "www.github.com",
+        "linkedin": "www.linkedin.com",
+        "profilePicture": "https://t.ctcdn.com.br/IVlt3nVuXYDVX4vyjzgborR84H0=/400x400/smart/i490793.jpeg",
+        "location": "Brazil/BR - Rio de Janeiro/RJ - Italva",
+        "isAdm": false,
+        "isActive": true,
+        "createdAt": "2023-01-19T00:33:41.944Z",
+        "updatedAt": "2023-01-19T00:33:41.944Z"
+      }
+    }
+  ],
+  "ong": {
+    "id": "ced7d48e-835d-49f9-999e-705b16d9dc01",
+    "companyName": "Another1",
+    "email": "another1@email.com",
+    "password": "$2a$10$dDUV2a9dd8D9FM6XxOg/zOxwDgfa5zyW16Fk4U7H7T8Jlp2kiDqZS",
+    "cnpj": "12345678901270",
+    "phone": 219765478,
+    "ownerName": null,
+    "profilePicture": null,
+    "github": null,
+    "linkedin": null,
+    "isActive": true,
+    "createdAt": "2023-01-19T00:38:49.923Z",
+    "updatedAt": "2023-01-19T00:40:01.281Z"
+  }
+}
+```
+
+### Possíveis Erros:
+
+| Código do Erro   | Descrição             |
+| ---------------- | --------------------- |
+| 401 Unauthorized | jwt must be provided. |
+
+---
+
+### 9.2. **Sair do projeto por id**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/users/projects/:project_id`
+
+### Exemplo de Request:
+
+```
+POST /users/projects/{{ _.projectId }}
+Host: https://devolunteer.onrender.com
+Authorization: Bearer token
+Content-type: application/json
+```
+
+### Corpo da Requisição:
+
+```json
+vazio
+```
+
+### Parâmetros da Requisição:
+
+| Parâmetro  | Tipo   | Descrição                                                           |
+| ---------- | ------ | ------------------------------------------------------------------- |
+| project_id | string | Identificador único do projeto cujo status será alterado (projects) |
+
+### Exemplo de Response:
+
+```
+204 No content
+```
+
+```json
+Vazio
+```
+
+### Possíveis Erros:
+
+| Código do Erro                               | Descrição             |
+| -------------------------------------------- | --------------------- |
+| 401 Unauthorized                             | jwt must be provided. |
+| [ Voltar para os Endpoints ](#5-endpoints)   |
+| [ Voltar para o topo ](#tabela-de-conteúdos) |
